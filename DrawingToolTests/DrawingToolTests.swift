@@ -10,29 +10,24 @@ import XCTest
 @testable import DrawingTool
 
 
+/// Uncategorized and generic Tests
 class DrawingToolTests: XCTestCase {
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    /**
+     Simple test to check coordinate equality
+     */
+    func testCoordinateEquality() {
+        let coordinateA = Coordinate(x:5, y:15)
+        let coordinateB = Coordinate(x:5, y:15)
+        XCTAssertEqual(coordinateA, coordinateB)
     }
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testCoordinateInequality() {
+        let coordinateA = Coordinate(x:5, y:15)
+        let coordinateB = Coordinate(x:15, y:5)
+        XCTAssertNotEqual(coordinateA, coordinateB)
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
+
 }
 

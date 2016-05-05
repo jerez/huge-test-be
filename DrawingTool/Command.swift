@@ -59,9 +59,10 @@ struct AddShapeCommand: Command {
         let coordinateB = Coordinate(x: input.params[2] as! uint, y:input.params[3] as! uint)
         let coordinatePair = (a:coordinateA, b:coordinateB)
         let line = ShapeBuilder(strategy: strategy, coordinatePair:coordinatePair, color:  "x")
-        guard receiver.canvas != nil else { throw CanvasDrawingError.CanvasDoesntExists }
-        
-        try receiver.canvas?.addShape(line)
+        guard receiver.canvas != nil else { return }
+        guard receiver.canvas!.shapeFits(line) else { return }
+ 
+        try receiver.canvas!.addShape(line)
         for row in receiver.canvas!.plot {
             print (String(row));
         }
@@ -74,9 +75,10 @@ struct BucketFillCommand: Command {
     func execute(receiver: Plotter) throws {
         let point = Coordinate(x: input.params[0] as! uint, y:input.params[1] as! uint)
         let color = input.params[2] as! Character
-        guard receiver.canvas != nil else { throw CanvasDrawingError.CanvasDoesntExists }
-
-        receiver.canvas?.fillBucket(point, color: color)
+        guard receiver.canvas != nil else { return }
+        guard receiver.canvas!.fitInCanvas(point) else { return }
+        
+        try receiver.canvas!.fillBucket(point, color: color)
         for row in receiver.canvas!.plot {
             print (String(row));
         }
