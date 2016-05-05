@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		C9FCB0F81CD7BE9300D97B57 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB0F71CD7BE9300D97B57 /* main.swift */; };
+		C9FCB1051CD7BEAF00D97B57 /* DrawingToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB1041CD7BEAF00D97B57 /* DrawingToolTests.swift */; };
+		C9FCB1251CD937AE00D97B57 /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB11F1CD937AE00D97B57 /* Canvas.swift */; };
+		C9FCB1261CD937AE00D97B57 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB1201CD937AE00D97B57 /* Coordinate.swift */; };
+		C9FCB1291CD937AE00D97B57 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB1231CD937AE00D97B57 /* Shape.swift */; };
+		C9FCB14A1CD940A000D97B57 /* CoordinateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB1491CD940A000D97B57 /* CoordinateTests.swift */; };
+		C9FCB15C1CD9814300D97B57 /* PlotStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB15B1CD9814300D97B57 /* PlotStrategy.swift */; };
+		C9FCB1601CD9C65F00D97B57 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB15F1CD9C65F00D97B57 /* Command.swift */; };
+		C9FCB1621CDB58CE00D97B57 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB1611CDB58CE00D97B57 /* Input.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,10 +33,27 @@
 /* Begin PBXFileReference section */
 		C9FCB0F41CD7BE9300D97B57 /* DrawingTool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DrawingTool; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9FCB0F71CD7BE9300D97B57 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		C9FCB1021CD7BEAF00D97B57 /* DrawingToolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrawingToolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9FCB1041CD7BEAF00D97B57 /* DrawingToolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingToolTests.swift; sourceTree = "<group>"; };
+		C9FCB1061CD7BEAF00D97B57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9FCB11F1CD937AE00D97B57 /* Canvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Canvas.swift; path = Models/Canvas.swift; sourceTree = "<group>"; };
+		C9FCB1201CD937AE00D97B57 /* Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Coordinate.swift; path = Models/Coordinate.swift; sourceTree = "<group>"; };
+		C9FCB1231CD937AE00D97B57 /* Shape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Shape.swift; path = Models/Shape.swift; sourceTree = "<group>"; };
+		C9FCB1491CD940A000D97B57 /* CoordinateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoordinateTests.swift; path = Models/CoordinateTests.swift; sourceTree = "<group>"; };
+		C9FCB15B1CD9814300D97B57 /* PlotStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlotStrategy.swift; path = Models/PlotStrategy.swift; sourceTree = "<group>"; };
+		C9FCB15F1CD9C65F00D97B57 /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		C9FCB1611CDB58CE00D97B57 /* Input.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		C9FCB0F11CD7BE9300D97B57 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9FCB0FF1CD7BEAF00D97B57 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -42,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				C9FCB0F61CD7BE9300D97B57 /* DrawingTool */,
+				C9FCB1031CD7BEAF00D97B57 /* DrawingToolTests */,
 				C9FCB0F51CD7BE9300D97B57 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				C9FCB0F41CD7BE9300D97B57 /* DrawingTool */,
+				C9FCB1021CD7BEAF00D97B57 /* DrawingToolTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -57,9 +84,25 @@
 		C9FCB0F61CD7BE9300D97B57 /* DrawingTool */ = {
 			isa = PBXGroup;
 			children = (
+				C9FCB11F1CD937AE00D97B57 /* Canvas.swift */,
+				C9FCB1201CD937AE00D97B57 /* Coordinate.swift */,
+				C9FCB1231CD937AE00D97B57 /* Shape.swift */,
+				C9FCB15B1CD9814300D97B57 /* PlotStrategy.swift */,
 				C9FCB0F71CD7BE9300D97B57 /* main.swift */,
+				C9FCB15F1CD9C65F00D97B57 /* Command.swift */,
+				C9FCB1611CDB58CE00D97B57 /* Input.swift */,
 			);
 			path = DrawingTool;
+			sourceTree = "<group>";
+		};
+		C9FCB1031CD7BEAF00D97B57 /* DrawingToolTests */ = {
+			isa = PBXGroup;
+			children = (
+				C9FCB1491CD940A000D97B57 /* CoordinateTests.swift */,
+				C9FCB1041CD7BEAF00D97B57 /* DrawingToolTests.swift */,
+				C9FCB1061CD7BEAF00D97B57 /* Info.plist */,
+			);
+			path = DrawingToolTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -82,6 +125,23 @@
 			productReference = C9FCB0F41CD7BE9300D97B57 /* DrawingTool */;
 			productType = "com.apple.product-type.tool";
 		};
+		C9FCB1011CD7BEAF00D97B57 /* DrawingToolTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9FCB1071CD7BEAF00D97B57 /* Build configuration list for PBXNativeTarget "DrawingToolTests" */;
+			buildPhases = (
+				C9FCB0FE1CD7BEAF00D97B57 /* Sources */,
+				C9FCB0FF1CD7BEAF00D97B57 /* Frameworks */,
+				C9FCB1001CD7BEAF00D97B57 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DrawingToolTests;
+			productName = DrawingToolTests;
+			productReference = C9FCB1021CD7BEAF00D97B57 /* DrawingToolTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -93,6 +153,9 @@
 				ORGANIZATIONNAME = Huge;
 				TargetAttributes = {
 					C9FCB0F31CD7BE9300D97B57 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					C9FCB1011CD7BEAF00D97B57 = {
 						CreatedOnToolsVersion = 7.3;
 					};
 				};
@@ -110,16 +173,42 @@
 			projectRoot = "";
 			targets = (
 				C9FCB0F31CD7BE9300D97B57 /* DrawingTool */,
+				C9FCB1011CD7BEAF00D97B57 /* DrawingToolTests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C9FCB1001CD7BEAF00D97B57 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C9FCB0F01CD7BE9300D97B57 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9FCB1621CDB58CE00D97B57 /* Input.swift in Sources */,
 				C9FCB0F81CD7BE9300D97B57 /* main.swift in Sources */,
+				C9FCB1291CD937AE00D97B57 /* Shape.swift in Sources */,
+				C9FCB1251CD937AE00D97B57 /* Canvas.swift in Sources */,
+				C9FCB15C1CD9814300D97B57 /* PlotStrategy.swift in Sources */,
+				C9FCB1261CD937AE00D97B57 /* Coordinate.swift in Sources */,
+				C9FCB1601CD9C65F00D97B57 /* Command.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9FCB0FE1CD7BEAF00D97B57 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9FCB1051CD7BEAF00D97B57 /* DrawingToolTests.swift in Sources */,
+				C9FCB14A1CD940A000D97B57 /* CoordinateTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,6 +311,28 @@
 			};
 			name = Release;
 		};
+		C9FCB1081CD7BEAF00D97B57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = DrawingToolTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = test.huge.DrawingToolTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C9FCB1091CD7BEAF00D97B57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = DrawingToolTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = test.huge.DrawingToolTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -239,6 +350,14 @@
 			buildConfigurations = (
 				C9FCB0FC1CD7BE9300D97B57 /* Debug */,
 				C9FCB0FD1CD7BE9300D97B57 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C9FCB1071CD7BEAF00D97B57 /* Build configuration list for PBXNativeTarget "DrawingToolTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9FCB1081CD7BEAF00D97B57 /* Debug */,
+				C9FCB1091CD7BEAF00D97B57 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
