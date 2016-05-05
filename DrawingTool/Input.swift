@@ -13,6 +13,12 @@ struct Input {
     let params:[Any]
 }
 
+extension Input: CustomStringConvertible {
+    var description: String {
+        return "Input(\(self.type.description))"
+    }
+}
+
 enum InputType {
     
     case CreateCanvas(String)
@@ -38,10 +44,10 @@ extension InputType: CustomStringConvertible {
     
     var description: String {
         switch self {
-        case CreateCanvas(let inputString):  return "InputType :: CreateCanvas -> {\"\(inputString)\"}"
-        case CreateLine(let inputString): return "InputType :: CreateLine -> {\"\(inputString)\"}"
-        case CreateRect(let inputString): return "InputType :: CreateRect -> {\"\(inputString)\"}"
-        case BucketFill(let inputString): return "InputType :: BucketFill -> {\"\(inputString)\"}"
+        case CreateCanvas(let inputString):  return "CreateCanvas -> {\"\(inputString)\"}"
+        case CreateLine(let inputString): return "CreateLine -> {\"\(inputString)\"}"
+        case CreateRect(let inputString): return "CreateRect -> {\"\(inputString)\"}"
+        case BucketFill(let inputString): return "BucketFill -> {\"\(inputString)\"}"
         }
     }
 }
@@ -95,24 +101,30 @@ extension Input: InputBuilder {
     func parseArgs (inputType: InputType, args: [String]) throws -> [Any] {
         let expected = inputType.paramTypes.count
         let got = args.count
-        
+        // Validate that param numbers are the same as defined for command
         guard got == expected else {
             throw InputParsingError.WrongArgumentNumber(inputType.description, expected, got)
         }
+        // Parse 1 by 1 parameters in string command
         var parsedArgs = [Any]()
         for index in 0..<args.count{
             let type = inputType.paramTypes[index];
             switch type {
             case .Number:
                 let parsedArg = uint(args[index])
-                guard parsedArg != nil else { throw InputParsingError.WrongArgumentValue(inputType.description, args[index]) }
+                // Coordinate params should be number greaters than 0
+                guard parsedArg != nil && parsedArg > 0
+                    else { throw InputParsingError.WrongArgumentValue(inputType.description, args[index]) }
                 parsedArgs.append(parsedArg)
             default:
+                // Only accept 1 character as colors
+                guard (args[index]).characters.count == 1 else { throw InputParsingError.WrongArgumentValue(inputType.description, args[index]) }
                 parsedArgs.append(Character(args[index]))
             }
         }
         return parsedArgs
     }
+    
     
     private func getFromKey(key: String, inputString: String) -> InputType? {
         switch key {

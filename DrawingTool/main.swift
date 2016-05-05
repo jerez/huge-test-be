@@ -40,11 +40,11 @@ class PlotOperation: Plotter {
         let lineStrategy = LineStrategy()
         let rectStrategy = RectStrategy()
         
-        print("Prepare operation")
         for string in self._stringInstructions {
             if !string.isEmpty{
                 do {
                     let input = try self._builder.parseInput(string);
+                    print("Loaded command -> \(input)")
                     addCommand(PlotOperation.notify, message: input.type.description )
                     
                     switch input.type {
@@ -67,6 +67,9 @@ class PlotOperation: Plotter {
   
                 } catch let error as InputParsingError {
                     print("Error -> \(error.description)")
+                } catch let error {
+                    print("Something unexpected went wrong! :( ")
+                    throw error
                 }
             }
         }
@@ -94,22 +97,21 @@ class PlotOperation: Plotter {
 
 
 let string_commands = [
-    "C 20 4",
-    "L   1 2 6 2",
-    "L 6  3 6 4",
-    "R 16   1 20  3",
-    "B 10 3   o",
-    "D  ",
-    "  ",
+    "C 50 4",
+    "L 1 2 6 2",
+    "L 6 3 6 4",
+    "R 16 1 20 3",
+    "R 26 1 44 4",
+    "B 10 3 o",
 ]
 
 
-
-
+//TODO :: extract builder as a stand alone class
 let inputBuilder = Input(type: InputType.CreateCanvas(""), params:[Any]())
 let operation = PlotOperation(inputBuilder:inputBuilder, stringInstructions: string_commands)
-//try operation.buildInputs()
+
 try operation.prepareOperation()
+print("Ploting...")
 let commands = operation.getCommand()
 commands?.execute(operation)
 print("\n")

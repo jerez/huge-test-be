@@ -25,3 +25,4 @@ func == (lhs: Coordinate, rhs: Coordinate) -> Bool {
 typealias CoordinatePair = (a: Coordinate, b: Coordinate)
 
 
+

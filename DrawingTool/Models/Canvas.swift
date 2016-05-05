@@ -9,7 +9,20 @@
 import Foundation
 
 
-class Canvas: NSObject {
+enum CanvasDrawingError: ErrorType {
+    case ShapeDoesntFits(String, String)
+}
+
+extension CanvasDrawingError: CustomStringConvertible {
+    var description: String {
+        switch self {
+        case ShapeDoesntFits(let coords, let canvas): return "Shape :{\"\(coords)\"} doesnt fits in canvas : \(canvas)"
+        }
+    }
+}
+
+
+class Canvas {
     
     private static let EMPTY_COLOR : Character = " "
     private static let HRZ_LINE_COLOR : Character = "-"
@@ -29,13 +42,12 @@ class Canvas: NSObject {
     }
     
     func shapeFits(shape: Shape) -> Bool {
-        return self.fitInCanvas((shape.plot?.first)!) && self.fitInCanvas((shape.plot?.last)!)
+        return self.fitInCanvas(shape.coordinates.a) && self.fitInCanvas(shape.coordinates.b)
     }
     
-    func addShape(shape: Shape){
-        if self.shapeFits(shape) {
-            self.plotShape(shape);
-        }
+    func addShape(shape: Shape) throws {
+        guard self.shapeFits(shape) else { throw CanvasDrawingError.ShapeDoesntFits("\(shape.coordinates)", self.description) }
+        self.plotShape(shape);
     }
     
     func fillBucket(coord: Coordinate, color:Character){
@@ -89,13 +101,19 @@ class Canvas: NSObject {
         var emptyLine = Array(count:Int(width), repeatedValue: Canvas.EMPTY_COLOR)
         emptyLine.insert(Canvas.VRT_LINE_COLOR, atIndex: 0)
         emptyLine.insert(Canvas.VRT_LINE_COLOR, atIndex: Int(width)+1)
-
+        
         var plotMatrix = [[Character]]()
         for rowNum in 0...plotHeight {
             let isBorder = rowNum == 0 || rowNum == plotHeight
             plotMatrix.append(isBorder ? horizontalLine : emptyLine)
         }
         return plotMatrix
+    }
+}
+
+extension Canvas: CustomStringConvertible{
+    var description: String{
+        return "Canvas -> {width:\(self._width) height:\(self._height)}"
     }
 }
 

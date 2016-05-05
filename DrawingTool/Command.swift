@@ -34,7 +34,7 @@ class CommandWrapper: Command {
         self.commands = commands
     }
     func execute(receiver: Plotter) {
-        return commands.forEach{$0.execute(receiver)}
+        commands.forEach{$0.execute(receiver)}
     }
 }
 
@@ -60,7 +60,13 @@ struct AddShapeCommand: Command {
         let coordinateB = Coordinate(x: input.params[2] as! uint, y:input.params[3] as! uint)
         let coordinatePair = (a:coordinateA, b:coordinateB)
         let line = ShapeBuilder(strategy: strategy, coordinatePair:coordinatePair, color:  "x")
-        receiver.canvas?.addShape(line)
+        do {
+            try receiver.canvas?.addShape(line)
+        } catch let error as CanvasDrawingError {
+            print("Error, IGNORING COMMAND!!! -> \(error.description)")
+        } catch _ {
+            print("Something unexpected went wrong when drawing a shape! :( ")
+        }
         for row in receiver.canvas!.plot {
             print (String(row));
         }

@@ -10,7 +10,8 @@ import Foundation
 
 protocol Shape {
     var color: Character { get set }
-    var plot: [Coordinate]? { get }
+    var coordinates: CoordinatePair { get }
+    var plot:[Coordinate]? { get }
 }
 
 
@@ -21,6 +22,8 @@ class ShapeBuilder: Shape {
     internal var _plot:[Coordinate]?
     
     var color: Character
+    var coordinates: CoordinatePair { get { return self._coordPair } }
+
     
     init(strategy:PlotStrategy, coordinatePair: CoordinatePair, color: Character){
         self._strategy = strategy
@@ -29,7 +32,7 @@ class ShapeBuilder: Shape {
     }
     
     var plot: [Coordinate]? {
-        get {
+         get {
             if self._plot == nil {
                 self._plot = self._strategy.buildPlot(_coordPair)
             }
