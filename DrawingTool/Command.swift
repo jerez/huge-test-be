@@ -9,7 +9,7 @@
 import Foundation
 
 protocol Command   {
-    func execute(receiver: Plotter) throws
+    func execute(receiver: Drawer) throws
 }
 
 class GenericCommand<T>: Command {
@@ -17,7 +17,7 @@ class GenericCommand<T>: Command {
     init(instruction: T -> ()){
         self.instruction = instruction
     }
-    func execute(receiver: Plotter) throws {
+    func execute(receiver: Drawer) throws {
         guard let safeReceiver = receiver as? T else {
             fatalError("Receiver is not an expected type")
         }
@@ -33,55 +33,69 @@ class CommandWrapper: Command {
     init(commands: [Command]){
         self.commands = commands
     }
-    func execute(receiver: Plotter) throws {
+    func execute(receiver: Drawer) throws {
         try commands.forEach{ try $0.execute(receiver)}
     }
 }
 
-struct CreateCanvasCommand: Command {
-    var input: Input
+class DrawCommand: Command {
     
-    func execute(receiver: Plotter) {
-        let canvas = Canvas(width: input.params[0] as! uint, height: input.params[1] as! uint)
-        receiver.setCanvas(canvas)
-        for row in canvas.plot {
-            print (String(row));
+    internal var _input: Input
+    init(input:Input){
+        self._input = input;
+    }
+    
+    func execute(receiver: Drawer) throws {
+        guard receiver.canvas != nil else { return }
+        
+        var canvasContent:[String] = []
+        for row in receiver.canvas!.plot {
+            canvasContent.append(String(row));
         }
+        OutputBuffer.sharedInstance.append(canvasContent)
     }
 }
 
-struct AddShapeCommand: Command {
-    var input: Input
-    var strategy: PlotStrategy;
+class CreateCanvasCommand: DrawCommand {
     
-    func execute(receiver: Plotter) throws {
-        let coordinateA = Coordinate(x: input.params[0] as! uint, y:input.params[1] as! uint)
-        let coordinateB = Coordinate(x: input.params[2] as! uint, y:input.params[3] as! uint)
+    override func execute(receiver: Drawer) throws {
+        let canvas = Canvas(width: self._input.params[0] as! uint, height: self._input.params[1] as! uint)
+        receiver.setCanvas(canvas)
+        try super.execute(receiver)
+    }
+}
+
+class AddShapeCommand: DrawCommand {
+    
+    internal var _strategy: PlotStrategy
+    init(input:Input, strategy: PlotStrategy){
+        self._strategy = strategy
+        super.init(input: input)
+    }
+    
+    override func execute(receiver: Drawer) throws {
+        let coordinateA = Coordinate(x: self._input.params[0] as! uint, y: self._input.params[1] as! uint)
+        let coordinateB = Coordinate(x: self._input.params[2] as! uint, y: self._input.params[3] as! uint)
         let coordinatePair = (a:coordinateA, b:coordinateB)
-        let line = ShapeBuilder(strategy: strategy, coordinatePair:coordinatePair, color:  "x")
+        let line = ShapeBuilder(strategy: self._strategy, coordinatePair:coordinatePair, color:  "x")
         guard receiver.canvas != nil else { return }
         guard receiver.canvas!.shapeFits(line) else { return }
- 
+        
         try receiver.canvas!.addShape(line)
-        for row in receiver.canvas!.plot {
-            print (String(row));
-        }
+        try super.execute(receiver)
     }
 }
 
-struct BucketFillCommand: Command {
-    var input: Input
+class BucketFillCommand: DrawCommand {
     
-    func execute(receiver: Plotter) throws {
-        let point = Coordinate(x: input.params[0] as! uint, y:input.params[1] as! uint)
-        let color = input.params[2] as! Character
+    override func execute(receiver: Drawer) throws {
+        let point = Coordinate(x: self._input.params[0] as! uint, y: self._input.params[1] as! uint)
+        let color = self._input.params[2] as! Character
         guard receiver.canvas != nil else { return }
         guard receiver.canvas!.fitInCanvas(point) else { return }
         
         try receiver.canvas!.fillBucket(point, color: color)
-        for row in receiver.canvas!.plot {
-            print (String(row));
-        }
+        try super.execute(receiver)
     }
 }
 

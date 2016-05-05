@@ -19,25 +19,23 @@ let string_commands = [
 
 
 let inputBuilder = InputCreator()
-let operation = PlotOperation(inputBuilder:inputBuilder, stringInstructions: string_commands)
+let operation = DrawOperation(inputBuilder:inputBuilder, stringInstructions: string_commands)
 do {
     do {
         try operation.prepareOperation()
     } catch let error as InputParsingError {
-        print("Error -> \(error.description)")
+        OutputBuffer.sharedInstance.log("Error -> \(error.description)")
     }
     do {
-        print("Ploting...")
+        OutputBuffer.sharedInstance.log("Ploting...")
         let commands = operation.getCommand()
         try commands?.execute(operation)
     } catch let error as CanvasDrawingError {
-        print("WARN IGNORING COMMAND!!! \(error.description)")
+        OutputBuffer.sharedInstance.log("WARN IGNORING COMMAND!!! \(error.description)")
     }
 }
 catch _ {
-    print("Something unexpected went wrong! :( ")
+    OutputBuffer.sharedInstance.log("Something unexpected went wrong! :( ")
 }
-
-print("\n")
 
 

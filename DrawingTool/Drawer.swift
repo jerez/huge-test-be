@@ -1,5 +1,5 @@
 //
-//  Plotter.swift
+//  Drawer.swift
 //  DrawingTool
 //
 //  Created by Carlos Jerez on 5/5/16.
@@ -9,13 +9,13 @@
 import Foundation
 
 
-protocol Plotter{
+protocol Drawer{
     var canvas: Canvas? { get }
     func setCanvas(canvas:Canvas)
 }
 
 
-class PlotOperation: Plotter {
+class DrawOperation: Drawer {
     
     var canvas: Canvas? {
         get { return self._canvas }
@@ -43,37 +43,38 @@ class PlotOperation: Plotter {
         for string in self._stringInstructions {
             if !string.isEmpty{
                 let input = try self._builder.parseInput(string);
-                print("Loaded command -> \(input)")
-                addCommand(PlotOperation.notify, message: input.type.description )
+                OutputBuffer.sharedInstance.log("Loaded command -> \(input)")
+                addCommand(DrawOperation.notify, content: input.type.description )
                 
                 switch input.type {
                 case .CreateCanvas:
-                    addCommand(PlotOperation.notify, message: "ploting -> \(input)")
+                    addCommand(DrawOperation.notify, content: "ploting -> \(input)")
                     self._commands.append(CreateCanvasCommand(input:input))
                     
                 case .CreateLine:
-                    addCommand(PlotOperation.notify, message: "ploting -> \(input)")
+                    addCommand(DrawOperation.notify, content: "ploting -> \(input)")
                     self._commands.append(AddShapeCommand(input:input, strategy: lineStrategy))
                     
                 case .CreateRect:
-                    addCommand(PlotOperation.notify, message: "ploting -> \(input)")
+                    addCommand(DrawOperation.notify, content: "ploting -> \(input)")
                     self._commands.append(AddShapeCommand(input:input, strategy: rectStrategy))
                     
                 case .BucketFill:
-                    addCommand(PlotOperation.notify, message: "ploting -> \(input)")
+                    addCommand(DrawOperation.notify, content: "ploting -> \(input)")
                     self._commands.append(BucketFillCommand(input:input))
                 }
             }
         }
     }
-    func notify(input: String){
-        print(input)
+    
+    func notify(message: String){
+       OutputBuffer.sharedInstance.log(message)
     }
     
-    private func addCommand(action: PlotOperation -> String -> (), message: String){
+    private func addCommand(action: DrawOperation -> String -> (), content: String){
         dispatch_sync(_queue) { () -> () in
             self._commands.append(GenericCommand.createCommand({ prep  in
-                action(prep)(message)
+                action(prep)(content)
             }))
         }
     }
