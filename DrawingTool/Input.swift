@@ -13,12 +13,6 @@ struct Input {
     let params:[Any]
 }
 
-extension Input: CustomStringConvertible {
-    var description: String {
-        return "Input(\(self.type.description))"
-    }
-}
-
 enum InputType {
     
     case CreateCanvas(String)
@@ -40,42 +34,18 @@ enum InputType {
     
 }
 
-extension InputType: CustomStringConvertible {
-    
-    var description: String {
-        switch self {
-        case CreateCanvas(let inputString):  return "CreateCanvas -> {\"\(inputString)\"}"
-        case CreateLine(let inputString): return "CreateLine -> {\"\(inputString)\"}"
-        case CreateRect(let inputString): return "CreateRect -> {\"\(inputString)\"}"
-        case BucketFill(let inputString): return "BucketFill -> {\"\(inputString)\"}"
-        }
-    }
-}
-
 enum InputParsingError: ErrorType {
     case WrongInput(String)
     case WrongArgumentNumber(String, Int, Int)
     case WrongArgumentValue(String, String)
 }
 
-extension InputParsingError: CustomStringConvertible {
-    var description: String {
-        switch self {
-        case WrongInput(let input): return "Error parsing {\"\(input)\"} as a valid input"
-        case WrongArgumentNumber(let input, let expect, let got):
-            return "Wrong arguments number, expected {\(expect)} got {\(got)} in \(input)"
-        case WrongArgumentValue(let input, let val):  return "Wrong argument value {\(val)} in \(input)"
-        }
-    }
-}
-
-
 protocol InputBuilder {
     func parseInput (string: String) throws -> Input
     func parseArgs (inputType: InputType, args: [String]) throws -> [Any]
 }
 
-extension Input: InputBuilder {
+class InputCreator: InputBuilder {
     func parseInput(string: String) throws -> Input{
         let stripped = self.stripSpaces(string)
         let splitted = stripped.componentsSeparatedByString(" ")
@@ -86,7 +56,7 @@ extension Input: InputBuilder {
         // parse type
         let inputType = getFromKey(splitted[0], inputString: stripped)
         
-        // Return nil if no type parsed
+        // Return error if no type parsed
         guard inputType != nil else { throw  InputParsingError.WrongInput(string) }
         
         let args = Array(splitted[1..<splitted.count])

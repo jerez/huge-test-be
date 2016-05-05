@@ -8,8 +8,8 @@
 
 import Foundation
 
-protocol Command {
-    func execute(receiver: Plotter)
+protocol Command   {
+    func execute(receiver: Plotter) throws
 }
 
 class GenericCommand<T>: Command {
@@ -17,7 +17,7 @@ class GenericCommand<T>: Command {
     init(instruction: T -> ()){
         self.instruction = instruction
     }
-    func execute(receiver: Plotter) {
+    func execute(receiver: Plotter) throws {
         guard let safeReceiver = receiver as? T else {
             fatalError("Receiver is not an expected type")
         }
@@ -33,8 +33,8 @@ class CommandWrapper: Command {
     init(commands: [Command]){
         self.commands = commands
     }
-    func execute(receiver: Plotter) {
-        commands.forEach{$0.execute(receiver)}
+    func execute(receiver: Plotter) throws {
+        try commands.forEach{ try $0.execute(receiver)}
     }
 }
 
@@ -47,7 +47,6 @@ struct CreateCanvasCommand: Command {
         for row in canvas.plot {
             print (String(row));
         }
-        return ()
     }
 }
 
@@ -55,36 +54,32 @@ struct AddShapeCommand: Command {
     var input: Input
     var strategy: PlotStrategy;
     
-    func execute(receiver: Plotter) {
+    func execute(receiver: Plotter) throws {
         let coordinateA = Coordinate(x: input.params[0] as! uint, y:input.params[1] as! uint)
         let coordinateB = Coordinate(x: input.params[2] as! uint, y:input.params[3] as! uint)
         let coordinatePair = (a:coordinateA, b:coordinateB)
         let line = ShapeBuilder(strategy: strategy, coordinatePair:coordinatePair, color:  "x")
-        do {
-            try receiver.canvas?.addShape(line)
-        } catch let error as CanvasDrawingError {
-            print("Error, IGNORING COMMAND!!! -> \(error.description)")
-        } catch _ {
-            print("Something unexpected went wrong when drawing a shape! :( ")
-        }
+        guard receiver.canvas != nil else { throw CanvasDrawingError.CanvasDoesntExists }
+        
+        try receiver.canvas?.addShape(line)
         for row in receiver.canvas!.plot {
             print (String(row));
         }
-        return ()
     }
 }
 
 struct BucketFillCommand: Command {
     var input: Input
     
-    func execute(receiver: Plotter) {
+    func execute(receiver: Plotter) throws {
         let point = Coordinate(x: input.params[0] as! uint, y:input.params[1] as! uint)
         let color = input.params[2] as! Character
+        guard receiver.canvas != nil else { throw CanvasDrawingError.CanvasDoesntExists }
+
         receiver.canvas?.fillBucket(point, color: color)
         for row in receiver.canvas!.plot {
             print (String(row));
         }
-        return ()
     }
 }
 

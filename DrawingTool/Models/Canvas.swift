@@ -11,23 +11,14 @@ import Foundation
 
 enum CanvasDrawingError: ErrorType {
     case ShapeDoesntFits(String, String)
+    case CanvasDoesntExists
 }
-
-extension CanvasDrawingError: CustomStringConvertible {
-    var description: String {
-        switch self {
-        case ShapeDoesntFits(let coords, let canvas): return "Shape :{\"\(coords)\"} doesnt fits in canvas : \(canvas)"
-        }
-    }
-}
-
 
 class Canvas {
     
     private static let EMPTY_COLOR : Character = " "
     private static let HRZ_LINE_COLOR : Character = "-"
     private static let VRT_LINE_COLOR : Character = "|"
-    
     private let _width, _height: uint
     private var _plotMatrix: [[Character]]?;
     
@@ -35,6 +26,13 @@ class Canvas {
         self._width = width
         self._height = height
         self._plotMatrix = Canvas.initMatrix(width, height:height);
+    }
+    
+    var width: uint {
+        get { return self._width}
+    }
+    var height: uint{
+        get { return self._height }
     }
     
     var plot: [[Character]] {
@@ -111,9 +109,5 @@ class Canvas {
     }
 }
 
-extension Canvas: CustomStringConvertible{
-    var description: String{
-        return "Canvas -> {width:\(self._width) height:\(self._height)}"
-    }
-}
+
 

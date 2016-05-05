@@ -16,6 +16,8 @@
 		C9FCB15C1CD9814300D97B57 /* PlotStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB15B1CD9814300D97B57 /* PlotStrategy.swift */; };
 		C9FCB1601CD9C65F00D97B57 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB15F1CD9C65F00D97B57 /* Command.swift */; };
 		C9FCB1621CDB58CE00D97B57 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB1611CDB58CE00D97B57 /* Input.swift */; };
+		C9FCB1641CDBB23700D97B57 /* StringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB1631CDBB23700D97B57 /* StringConvertible.swift */; };
+		C9FCB1661CDBB49D00D97B57 /* Plotter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB1651CDBB49D00D97B57 /* Plotter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,6 +45,8 @@
 		C9FCB15B1CD9814300D97B57 /* PlotStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlotStrategy.swift; path = Models/PlotStrategy.swift; sourceTree = "<group>"; };
 		C9FCB15F1CD9C65F00D97B57 /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		C9FCB1611CDB58CE00D97B57 /* Input.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
+		C9FCB1631CDBB23700D97B57 /* StringConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringConvertible.swift; sourceTree = "<group>"; };
+		C9FCB1651CDBB49D00D97B57 /* Plotter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plotter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +95,8 @@
 				C9FCB0F71CD7BE9300D97B57 /* main.swift */,
 				C9FCB15F1CD9C65F00D97B57 /* Command.swift */,
 				C9FCB1611CDB58CE00D97B57 /* Input.swift */,
+				C9FCB1631CDBB23700D97B57 /* StringConvertible.swift */,
+				C9FCB1651CDBB49D00D97B57 /* Plotter.swift */,
 			);
 			path = DrawingTool;
 			sourceTree = "<group>";
@@ -199,6 +205,8 @@
 				C9FCB1251CD937AE00D97B57 /* Canvas.swift in Sources */,
 				C9FCB15C1CD9814300D97B57 /* PlotStrategy.swift in Sources */,
 				C9FCB1261CD937AE00D97B57 /* Coordinate.swift in Sources */,
+				C9FCB1641CDBB23700D97B57 /* StringConvertible.swift in Sources */,
+				C9FCB1661CDBB49D00D97B57 /* Plotter.swift in Sources */,
 				C9FCB1601CD9C65F00D97B57 /* Command.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
