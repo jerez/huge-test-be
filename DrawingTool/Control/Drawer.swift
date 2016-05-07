@@ -2,7 +2,7 @@
 //  Drawer.swift
 //  DrawingTool
 //
-//  Created by Carlos Jerez on 5/5/16.
+//  Created by Carlos Jerez on 5/3/16.
 //  Copyright © 2016 Huge. All rights reserved.
 //
 
@@ -28,36 +28,28 @@ protocol Operation {
  */
 protocol Drawer{
     /**
-     Logs string into buffer
-     
-     - parameter entry: log entry
+     Actual canvas to be drawn
      */
+    func setCanvas(canvas: Canvas)
+    var canvas: Canvas? { get }
+
+    /**
+     Logs string into buffer
+    */
     func logCommand(entry: String)
+    
     /**
      Sets buffer implementation to a drawer instance
-     
-     - parameter buffer: Object used to store outputs
-     */
+    */
     func setOutputBuffer(buffer: OutputBuffer)
     
     /**
-     Actual canvas to be drawn
-     
-     - parameter canvas: Instance of Canvas
-     */
-    func setCanvas(canvas: Canvas)
-    /**
      Convenience method to draw shape into its canvas
-     
-     - parameter shape: Shape instance
-     */
+    */
     func drawInCanvas(shape: Shape)
+    
     /**
      Convenience method to fill bucket of its canvas
-     
-     - parameter point: Coordinate of point
-     - parameter color: Character to be drawn
-     
      */
     func fillCanvasBucket(point: Coordinate, color:Character)
 }
@@ -68,6 +60,9 @@ class DrawOperation {
     private var _queue = dispatch_queue_create("commandQueue", DISPATCH_QUEUE_SERIAL)
     private var _canvas: Canvas?
     private var _buffer: OutputBuffer?
+    var canvas: Canvas? {
+        get{ return self._canvas }
+    }
 }
 
 
@@ -85,6 +80,8 @@ extension DrawOperation: Drawer {
     func drawInCanvas(shape:Shape) {
         do{
             guard self._canvas != nil else { throw CanvasDrawingError.CanvasDoesntExists }
+            guard shape.plot != nil else { throw CanvasDrawingError.InvalidShape }
+
             try self._canvas!.addShape(shape)
             self._buffer?.appendToBuffer(self.getCanvasContent())
         } catch let error {
@@ -102,8 +99,7 @@ extension DrawOperation: Drawer {
     }
     
     private func getCanvasContent()-> String {
-        let contentArray = self._canvas!.plot.map{String($0)}
-        return contentArray.joinWithSeparator("\n")
+        return self._canvas!.plot.map{String($0)}.joinWithSeparator("\n")
     }
 }
 

@@ -2,7 +2,7 @@
 //  Input.swift
 //  DrawingTool
 //
-//  Created by Carlos Jerez on 5/5/16.
+//  Created by Carlos Jerez on 5/3/16.
 //  Copyright © 2016 Huge. All rights reserved.
 //
 
@@ -49,7 +49,16 @@ enum InputType {
         case BucketFill: return [.Number, .Number, .String]
         }
     }
-    
+}
+//Cmparator overload
+func ==(a: InputType, b: InputType) -> Bool {
+    switch (a, b) {
+    case (.CreateCanvas(let a),   .CreateCanvas(let b))   where a == b: return true
+    case (.CreateLine(let a),   .CreateLine(let b))   where a == b: return true
+    case (.CreateRect(let a),   .CreateRect(let b))   where a == b: return true
+    case (.BucketFill(let a), .BucketFill(let b)) where a == b: return true
+    default: return false
+    }
 }
 
 /**
@@ -101,9 +110,22 @@ class InputCreator: InputBuilder {
         let args = Array(splitted[1..<splitted.count])
         let parsedArgs = try parseArgs(inputType!, args: args)
         
+        // Early check if line command is valid
+        if inputType! == InputType.CreateLine(stripped){
+            guard args[0]==args[2] || args[1]==args[3] else {
+                throw InputParsingError.WrongArgumentValue(inputType!.description, args.joinWithSeparator(","))
+            }
+        }
+        
+        // Early check if rect command is valid
+        if inputType! == InputType.CreateRect(stripped){
+            guard args[0] != args[2] && args[1] != args[3] else {
+                throw InputParsingError.WrongArgumentValue(inputType!.description, args.joinWithSeparator(","))
+            }
+        }
+        
         //extract args
         return Input(type:inputType!, params: parsedArgs);
-        
     }
     
     
@@ -127,7 +149,8 @@ class InputCreator: InputBuilder {
                 parsedArgs.append(parsedArg)
             default:
                 // Only accept 1 character as colors
-                guard (args[index]).characters.count == 1 else { throw InputParsingError.WrongArgumentValue(inputType.description, args[index]) }
+                guard (args[index]).characters.count == 1 else {
+                    throw InputParsingError.WrongArgumentValue(inputType.description, args[index]) }
                 parsedArgs.append(Character(args[index]))
             }
         }

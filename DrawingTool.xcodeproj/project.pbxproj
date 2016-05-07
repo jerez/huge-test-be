@@ -16,12 +16,27 @@
 		C9C12BDC1CDD7764004BB0F3 /* PlotStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C12BD21CDD7764004BB0F3 /* PlotStrategy.swift */; };
 		C9C12BDD1CDD7764004BB0F3 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C12BD31CDD7764004BB0F3 /* Shape.swift */; };
 		C9C12BDE1CDD7764004BB0F3 /* FileIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C12BD51CDD7764004BB0F3 /* FileIO.swift */; };
-		C9C12BDF1CDD7764004BB0F3 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C12BD61CDD7764004BB0F3 /* Input.swift */; };
 		C9C12BE01CDD7764004BB0F3 /* OutputBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C12BD71CDD7764004BB0F3 /* OutputBuffer.swift */; };
+		C9C12BE11CDD84AD004BB0F3 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C12BCD1CDD7764004BB0F3 /* Command.swift */; };
+		C9C12BE21CDD84AD004BB0F3 /* Drawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C12BCE1CDD7764004BB0F3 /* Drawer.swift */; };
+		C9C12BE31CDD84AD004BB0F3 /* StringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C12BCF1CDD7764004BB0F3 /* StringConvertible.swift */; };
+		C9C12BE41CDD84AD004BB0F3 /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C12BD11CDD7764004BB0F3 /* Canvas.swift */; };
+		C9C12BE51CDD84AD004BB0F3 /* PlotStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C12BD21CDD7764004BB0F3 /* PlotStrategy.swift */; };
+		C9C12BE61CDD84AD004BB0F3 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C12BD31CDD7764004BB0F3 /* Shape.swift */; };
+		C9C12BE71CDD84AD004BB0F3 /* FileIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C12BD51CDD7764004BB0F3 /* FileIO.swift */; };
+		C9C12BE91CDD84AD004BB0F3 /* OutputBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C12BD71CDD7764004BB0F3 /* OutputBuffer.swift */; };
+		C9C12BEE1CDD8D03004BB0F3 /* CommandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C12BED1CDD8D03004BB0F3 /* CommandTests.swift */; };
+		C9C12BF01CDD8D1B004BB0F3 /* DrawerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C12BEF1CDD8D1B004BB0F3 /* DrawerTests.swift */; };
+		C9C12BF21CDD8D5F004BB0F3 /* CanvasTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C12BF11CDD8D5F004BB0F3 /* CanvasTests.swift */; };
+		C9C12BF41CDD8D77004BB0F3 /* PlotStrategyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C12BF31CDD8D77004BB0F3 /* PlotStrategyTests.swift */; };
+		C9C12BF61CDD8D8B004BB0F3 /* ShapeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C12BF51CDD8D8B004BB0F3 /* ShapeTests.swift */; };
+		C9C12BF81CDD8F04004BB0F3 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C12BF71CDD8F04004BB0F3 /* Input.swift */; };
+		C9C12BF91CDD8F0D004BB0F3 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C12BF71CDD8F04004BB0F3 /* Input.swift */; };
+		C9C12BFB1CDD8F48004BB0F3 /* OutputBufferTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C12BFA1CDD8F48004BB0F3 /* OutputBufferTests.swift */; };
+		C9C12BFD1CDD8F68004BB0F3 /* InputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C12BFC1CDD8F68004BB0F3 /* InputTests.swift */; };
 		C9FCB0F81CD7BE9300D97B57 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB0F71CD7BE9300D97B57 /* main.swift */; };
 		C9FCB1051CD7BEAF00D97B57 /* DrawingToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB1041CD7BEAF00D97B57 /* DrawingToolTests.swift */; };
 		C9FCB1681CDBBC9E00D97B57 /* IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB1671CDBBC9E00D97B57 /* IntegrationTests.swift */; };
-		C9FCB16D1CDBBFB600D97B57 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB0F71CD7BE9300D97B57 /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -47,8 +62,15 @@
 		C9C12BD21CDD7764004BB0F3 /* PlotStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlotStrategy.swift; sourceTree = "<group>"; };
 		C9C12BD31CDD7764004BB0F3 /* Shape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
 		C9C12BD51CDD7764004BB0F3 /* FileIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileIO.swift; sourceTree = "<group>"; };
-		C9C12BD61CDD7764004BB0F3 /* Input.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
 		C9C12BD71CDD7764004BB0F3 /* OutputBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutputBuffer.swift; sourceTree = "<group>"; };
+		C9C12BED1CDD8D03004BB0F3 /* CommandTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandTests.swift; sourceTree = "<group>"; };
+		C9C12BEF1CDD8D1B004BB0F3 /* DrawerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerTests.swift; sourceTree = "<group>"; };
+		C9C12BF11CDD8D5F004BB0F3 /* CanvasTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasTests.swift; sourceTree = "<group>"; };
+		C9C12BF31CDD8D77004BB0F3 /* PlotStrategyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlotStrategyTests.swift; sourceTree = "<group>"; };
+		C9C12BF51CDD8D8B004BB0F3 /* ShapeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeTests.swift; sourceTree = "<group>"; };
+		C9C12BF71CDD8F04004BB0F3 /* Input.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
+		C9C12BFA1CDD8F48004BB0F3 /* OutputBufferTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutputBufferTests.swift; sourceTree = "<group>"; };
+		C9C12BFC1CDD8F68004BB0F3 /* InputTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputTests.swift; sourceTree = "<group>"; };
 		C9FCB0F41CD7BE9300D97B57 /* DrawingTool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DrawingTool; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9FCB0F71CD7BE9300D97B57 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		C9FCB1021CD7BEAF00D97B57 /* DrawingToolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrawingToolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +100,7 @@
 		C9C12BCC1CDD7764004BB0F3 /* Control */ = {
 			isa = PBXGroup;
 			children = (
+				C9C12BF71CDD8F04004BB0F3 /* Input.swift */,
 				C9C12BCD1CDD7764004BB0F3 /* Command.swift */,
 				C9C12BCE1CDD7764004BB0F3 /* Drawer.swift */,
 				C9C12BCF1CDD7764004BB0F3 /* StringConvertible.swift */,
@@ -99,8 +122,35 @@
 			isa = PBXGroup;
 			children = (
 				C9C12BD51CDD7764004BB0F3 /* FileIO.swift */,
-				C9C12BD61CDD7764004BB0F3 /* Input.swift */,
 				C9C12BD71CDD7764004BB0F3 /* OutputBuffer.swift */,
+			);
+			path = IO;
+			sourceTree = "<group>";
+		};
+		C9C12BEA1CDD8CDE004BB0F3 /* Control */ = {
+			isa = PBXGroup;
+			children = (
+				C9C12BED1CDD8D03004BB0F3 /* CommandTests.swift */,
+				C9C12BEF1CDD8D1B004BB0F3 /* DrawerTests.swift */,
+				C9C12BFC1CDD8F68004BB0F3 /* InputTests.swift */,
+			);
+			path = Control;
+			sourceTree = "<group>";
+		};
+		C9C12BEB1CDD8CDE004BB0F3 /* Drawing */ = {
+			isa = PBXGroup;
+			children = (
+				C9C12BF11CDD8D5F004BB0F3 /* CanvasTests.swift */,
+				C9C12BF31CDD8D77004BB0F3 /* PlotStrategyTests.swift */,
+				C9C12BF51CDD8D8B004BB0F3 /* ShapeTests.swift */,
+			);
+			path = Drawing;
+			sourceTree = "<group>";
+		};
+		C9C12BEC1CDD8CDE004BB0F3 /* IO */ = {
+			isa = PBXGroup;
+			children = (
+				C9C12BFA1CDD8F48004BB0F3 /* OutputBufferTests.swift */,
 			);
 			path = IO;
 			sourceTree = "<group>";
@@ -139,6 +189,9 @@
 		C9FCB1031CD7BEAF00D97B57 /* DrawingToolTests */ = {
 			isa = PBXGroup;
 			children = (
+				C9C12BEA1CDD8CDE004BB0F3 /* Control */,
+				C9C12BEB1CDD8CDE004BB0F3 /* Drawing */,
+				C9C12BEC1CDD8CDE004BB0F3 /* IO */,
 				C9FCB1041CD7BEAF00D97B57 /* DrawingToolTests.swift */,
 				C9FCB1061CD7BEAF00D97B57 /* Info.plist */,
 				C9FCB1671CDBBC9E00D97B57 /* IntegrationTests.swift */,
@@ -237,7 +290,7 @@
 				C9C12BCB1CDD7568004BB0F3 /* Executor.swift in Sources */,
 				C9FCB0F81CD7BE9300D97B57 /* main.swift in Sources */,
 				C9C12BDD1CDD7764004BB0F3 /* Shape.swift in Sources */,
-				C9C12BDF1CDD7764004BB0F3 /* Input.swift in Sources */,
+				C9C12BF81CDD8F04004BB0F3 /* Input.swift in Sources */,
 				C9C12BE01CDD7764004BB0F3 /* OutputBuffer.swift in Sources */,
 				C9C12BDB1CDD7764004BB0F3 /* Canvas.swift in Sources */,
 				C9C12BD91CDD7764004BB0F3 /* Drawer.swift in Sources */,
@@ -252,9 +305,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9C12BE91CDD84AD004BB0F3 /* OutputBuffer.swift in Sources */,
+				C9C12BE41CDD84AD004BB0F3 /* Canvas.swift in Sources */,
+				C9C12BF41CDD8D77004BB0F3 /* PlotStrategyTests.swift in Sources */,
+				C9C12BE21CDD84AD004BB0F3 /* Drawer.swift in Sources */,
+				C9C12BF01CDD8D1B004BB0F3 /* DrawerTests.swift in Sources */,
+				C9C12BFB1CDD8F48004BB0F3 /* OutputBufferTests.swift in Sources */,
+				C9C12BEE1CDD8D03004BB0F3 /* CommandTests.swift in Sources */,
+				C9C12BF91CDD8F0D004BB0F3 /* Input.swift in Sources */,
 				C9FCB1051CD7BEAF00D97B57 /* DrawingToolTests.swift in Sources */,
-				C9FCB16D1CDBBFB600D97B57 /* main.swift in Sources */,
+				C9C12BF21CDD8D5F004BB0F3 /* CanvasTests.swift in Sources */,
+				C9C12BE31CDD84AD004BB0F3 /* StringConvertible.swift in Sources */,
+				C9C12BE61CDD84AD004BB0F3 /* Shape.swift in Sources */,
+				C9C12BFD1CDD8F68004BB0F3 /* InputTests.swift in Sources */,
 				C9FCB1681CDBBC9E00D97B57 /* IntegrationTests.swift in Sources */,
+				C9C12BE11CDD84AD004BB0F3 /* Command.swift in Sources */,
+				C9C12BE51CDD84AD004BB0F3 /* PlotStrategy.swift in Sources */,
+				C9C12BE71CDD84AD004BB0F3 /* FileIO.swift in Sources */,
+				C9C12BF61CDD8D8B004BB0F3 /* ShapeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

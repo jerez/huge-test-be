@@ -40,8 +40,9 @@ class CreateCanvasCommand: DrawCommand {
     
     override func execute(receiver: Drawer) {
         super.execute(receiver)
-        let canvas = Canvas(width: self._input.params[0] as! uint, height: self._input.params[1] as! uint)
-        receiver.setCanvas(canvas)
+        let canvas = ConcreteCanvas(width: self._input.params[0] as! uint, height: self._input.params[1] as! uint)
+        guard canvas != nil else { return }
+        receiver.setCanvas(canvas!)
     }
 }
 

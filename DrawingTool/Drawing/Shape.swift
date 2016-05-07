@@ -33,7 +33,7 @@ protocol Shape {
 }
 
 /**
- *  Concrete implementation of shape that uses 
+ *  Concrete implementation of shape that uses
  *  a strategy to determine if should build a line or a rect
  */
 class ShapeBuilder: Shape {
@@ -44,7 +44,7 @@ class ShapeBuilder: Shape {
     
     var color: Character
     var coordinates: CoordinatePair { get { return self._coordPair } }
-
+    
     /**
      Shape Builder initializer
      
@@ -62,7 +62,7 @@ class ShapeBuilder: Shape {
     
     /// Array of coordinates that represents the shape
     var plot: [Coordinate]? {
-         get {
+        get {
             if self._plot == nil {
                 self._plot = self._strategy.buildPlot(_coordPair)
             }

@@ -2,7 +2,7 @@
 //  Buffer.swift
 //  DrawingTool
 //
-//  Created by Carlos Jerez on 5/5/16.
+//  Created by Carlos Jerez on 5/6/16.
 //  Copyright © 2016 Huge. All rights reserved.
 //
 

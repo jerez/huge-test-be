@@ -15,8 +15,11 @@ protocol PlotStrategy {
 class LineStrategy : PlotStrategy {
     func buildPlot(coordinates: CoordinatePair) -> [Coordinate]{
         
-        let transCoords = transformCoordinates(coordinates)
+        guard greaterThanZero(coordinates) && isLine(coordinates) else {
+            return []
+        }
         
+        let transCoords = transformCoordinates(coordinates)
         var plot = [Coordinate]()
         
         for x in transCoords.origin.x...transCoords.end.x {
@@ -26,6 +29,14 @@ class LineStrategy : PlotStrategy {
         }
         return plot;
     }
+    private func greaterThanZero(coordinates: CoordinatePair) -> Bool {
+        return coordinates.a.x > 0 && coordinates.b.x > 0 && coordinates.a.y > 0 && coordinates.b.y > 0
+    }
+    private func isLine(coordinates: CoordinatePair) -> Bool {
+        return coordinates.a.x == coordinates.b.x || coordinates.a.y == coordinates.b.y
+    }
+    
+    
     /**
      Transforms coordinates to be ploted from init to end (init is the most closer to 0,0)
      
@@ -49,17 +60,19 @@ class LineStrategy : PlotStrategy {
 /// Algorithm to plot Rects
 class RectStrategy : LineStrategy {
     
-    override func buildPlot(coordinates: CoordinatePair) -> [Coordinate]{
+    override func buildPlot(coordinates: CoordinatePair) -> [Coordinate] {
+        guard greaterThanZero(coordinates) && !isLine(coordinates)  else { return [] }
+
+        let transCoords = transformCoordinates(coordinates)
+
         var plot = [Coordinate]()
-        let coordArray = [
-            (Coordinate(x: coordinates.a.x, y: coordinates.a.y), Coordinate(x: coordinates.b.x, y: coordinates.a.y)),
-            (Coordinate(x: coordinates.b.x, y: coordinates.a.y), Coordinate(x: coordinates.b.x, y: coordinates.b.y)),
-            (Coordinate(x: coordinates.b.x, y: coordinates.b.y), Coordinate(x: coordinates.a.x, y: coordinates.b.y)),
-            (Coordinate(x: coordinates.a.x, y: coordinates.b.y), Coordinate(x: coordinates.a.x, y: coordinates.a.y)),
-            ]
-        for coordPair in coordArray {
-            let linePlot = super.buildPlot(coordPair);
-            plot.appendContentsOf(linePlot)
+        [   (Coordinate(x: transCoords.origin.x, y: transCoords.origin.y), Coordinate(x: transCoords.end.x, y: transCoords.origin.y)),
+            (Coordinate(x: transCoords.end.x, y: transCoords.origin.y+1 ), Coordinate(x: transCoords.end.x, y: transCoords.end.y)),
+            (Coordinate(x: transCoords.end.x-1, y: transCoords.end.y), Coordinate(x: transCoords.origin.x, y: transCoords.end.y)),
+            (Coordinate(x: transCoords.origin.x, y: transCoords.end.y-1), Coordinate(x: transCoords.origin.x , y: transCoords.origin.y+1)),
+            ].forEach{
+                    let linePlot = super.buildPlot($0);
+                    plot.appendContentsOf(linePlot)
         }
         return plot
     }

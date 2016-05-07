@@ -2,7 +2,7 @@
 //  IntegrationTests.swift
 //  DrawingTool
 //
-//  Created by Carlos Jerez on 5/5/16.
+//  Created by Carlos Jerez on 5/6/16.
 //  Copyright © 2016 Huge. All rights reserved.
 //
 
@@ -18,60 +18,55 @@ class IntegrationTests: XCTestCase {
         "R 16 1 20 3",
         "B 10 3 o",
         ]
-    
-    var inputBuilder: InputBuilder?
+    var operation: DrawOperation?
+    let inputBuilder = InputCreator()
 
     
     override func setUp() {
         super.setUp()
-        inputBuilder = InputCreator()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        operation = DrawOperation()
     }
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-
     func testCanvasCreation() {
-        let operation = PlotOperation(inputBuilder:self.inputBuilder!, stringInstructions: Array(arrayLiteral: string_commands.first!))
-        try! operation.prepareOperation()
-        try! operation.getCommand()?.execute(operation)
+        let input = try! inputBuilder.parseInput(string_commands.first!)
+        operation!.prepareOperation([input])
+        operation!.getCommands()?.execute(operation!)
         
-        XCTAssertEqual(operation.canvas?.width, 20)
-        XCTAssertEqual(operation.canvas?.height, 4)
-        XCTAssertEqual(operation.canvas?.plot.flatMap{$0}.count, (4+2)*(20+2) )
+        XCTAssertEqual(operation!.canvas?.width, 20)
+        XCTAssertEqual(operation!.canvas?.height, 4)
+        XCTAssertEqual(operation!.canvas?.plot.flatMap{$0}.count, (4+2)*(20+2) )
     }
     
     func testLineCreation() {
-        let commands =  [string_commands[0], string_commands[1]]
-        let operation = PlotOperation(inputBuilder:self.inputBuilder!, stringInstructions: commands)
-        try! operation.prepareOperation()
-        try! operation.getCommand()?.execute(operation)
+        let instructions =  [string_commands[0], string_commands[1]]
+        let commands = instructions.map{ try! inputBuilder.parseInput($0) }
+
+        operation!.prepareOperation(commands)
+        operation!.getCommands()?.execute(operation!)
         
-        XCTAssertEqual(operation.canvas?.plot[2][1], "x")
-        XCTAssertEqual(operation.canvas?.plot[2][2], "x")
-        XCTAssertEqual(operation.canvas?.plot[2][3], "x")
-        XCTAssertEqual(operation.canvas?.plot[2][4], "x")
-        XCTAssertEqual(operation.canvas?.plot[2][5], "x")
-        XCTAssertEqual(operation.canvas?.plot[2][6], "x")
+        XCTAssertEqual(operation!.canvas?.plot[2][1], "x")
+        XCTAssertEqual(operation!.canvas?.plot[2][2], "x")
+        XCTAssertEqual(operation!.canvas?.plot[2][3], "x")
+        XCTAssertEqual(operation!.canvas?.plot[2][4], "x")
+        XCTAssertEqual(operation!.canvas?.plot[2][5], "x")
+        XCTAssertEqual(operation!.canvas?.plot[2][6], "x")
 
     }
     
     func testPrepareOperationPerformance() {
         // This is an example of a performance test case.
         self.measureBlock {
-            let operation = PlotOperation(inputBuilder:self.inputBuilder!, stringInstructions: self.string_commands)
-            try! operation.prepareOperation()
+            let commands = self.string_commands.map{ try! self.inputBuilder.parseInput($0) }
+            self.operation!.prepareOperation(commands)
         }
     }
     
     func testWholeOperationPerformance() {
         // This is an example of a performance test case.
         self.measureBlock {
-            let operation = PlotOperation(inputBuilder:self.inputBuilder!, stringInstructions: self.string_commands)
-            try! operation.prepareOperation()
-            try! operation.getCommand()?.execute(operation)
+            let commands = self.string_commands.map{ try! self.inputBuilder.parseInput($0) }
+            self.operation!.prepareOperation(commands)
+            self.operation!.getCommands()?.execute(self.operation!)
         }
     }
 

@@ -31,3 +31,21 @@ class DrawingToolTests: XCTestCase {
 
 }
 
+//Asserts to test Throwing exceptions
+
+func XCTAssertThrows<T>(@autoclosure expression: () throws -> T, _ message: String = "", file: StaticString = #file, line: UInt = #line) {
+    do {
+        try expression()
+        XCTFail("No error to catch! - \(message)", file: file, line: line)
+    } catch {
+    }
+}
+
+func XCTAssertNoThrow<T>(@autoclosure expression: () throws -> T, _ message: String = "", file: StaticString = #file, line: UInt = #line) {
+    do {
+        try expression()
+    } catch let error {
+        XCTFail("Caught error: \(error) - \(message)", file: file, line: line)
+    }
+}
+

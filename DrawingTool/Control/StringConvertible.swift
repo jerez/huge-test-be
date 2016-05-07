@@ -2,14 +2,14 @@
 //  StringConvertible.swift
 //  DrawingTool
 //
-//  Created by Carlos Jerez on 5/5/16.
+//  Created by Carlos Jerez on 5/6/16.
 //  Copyright © 2016 Huge. All rights reserved.
 //
 
 import Foundation
 
 
-extension Canvas: CustomStringConvertible{
+extension ConcreteCanvas: CustomStringConvertible{
     var description: String{
         return "Canvas -> {width:\(self.width) height:\(self.height)}"
     }
@@ -21,6 +21,7 @@ extension CanvasDrawingError: CustomStringConvertible {
         case .PointNotInCanvas(let coord): return "Point :{\"\(coord)\"} is outside canvas)"
         case ShapeDoesntFits(let coords, let canvas): return "Shape :{\"\(coords)\"} doesn't fits in canvas : \(canvas)"
         case CanvasDoesntExists: return "Canvas doesn't exists"
+        case InvalidShape: return "Invalid Shape"
         }
     }
 }
