@@ -14,8 +14,26 @@ import Foundation
 struct Input {
     let type: InputType
     let params:[Any]
+    let instruction: String
 }
 
+extension Input: Equatable {}
+
+// MARK: Equatable
+func ==(lhs: Input, rhs: Input) -> Bool
+{
+    guard lhs.type == rhs.type else { return false }
+    guard lhs.params.count == rhs.params.count else { return false }
+    
+    var isEqual = true
+    
+    for index in 0..<lhs.params.count{
+        isEqual = lhs.params[index] as? NSString == rhs.params[index] as? NSString
+            && lhs.params[index] as? NSNumber == rhs.params[index] as? NSNumber
+        if !isEqual { break }
+    }
+    return isEqual
+}
 
 /**
  Types of instructions supported
@@ -27,13 +45,13 @@ struct Input {
  */
 enum InputType {
     
-    case CreateCanvas(String)
-    case CreateLine(String)
-    case CreateRect(String)
-    case BucketFill(String)
+    case CreateCanvas
+    case CreateLine
+    case CreateRect
+    case BucketFill
     
     /**
-     Types of params supported
+      Param types supported
      
      - String:
      - Number:
@@ -51,15 +69,7 @@ enum InputType {
     }
 }
 //Cmparator overload
-func ==(a: InputType, b: InputType) -> Bool {
-    switch (a, b) {
-    case (.CreateCanvas(let a),   .CreateCanvas(let b))   where a == b: return true
-    case (.CreateLine(let a),   .CreateLine(let b))   where a == b: return true
-    case (.CreateRect(let a),   .CreateRect(let b))   where a == b: return true
-    case (.BucketFill(let a), .BucketFill(let b)) where a == b: return true
-    default: return false
-    }
-}
+
 
 /**
  Types of Errors could be thrown on input parsing
@@ -88,7 +98,6 @@ protocol InputBuilder {
      - returns: Input struct representing instruction
      */
     func parseInput (string: String) throws -> Input
-    func parseArgs (inputType: InputType, args: [String]) throws -> [Any]
 }
 
 /// Actual Input Builde instance
@@ -102,7 +111,7 @@ class InputCreator: InputBuilder {
         guard !splitted.isEmpty && splitted.count > 0 else { throw InputParsingError.WrongInput(string) }
         
         // parse type
-        let inputType = getFromKey(splitted[0], inputString: stripped)
+        let inputType = getFromKey(splitted[0])
         
         // Return error if no type parsed
         guard inputType != nil else { throw  InputParsingError.WrongInput(string) }
@@ -111,25 +120,25 @@ class InputCreator: InputBuilder {
         let parsedArgs = try parseArgs(inputType!, args: args)
         
         // Early check if line command is valid
-        if inputType! == InputType.CreateLine(stripped){
+        if inputType! == InputType.CreateLine{
             guard args[0]==args[2] || args[1]==args[3] else {
                 throw InputParsingError.WrongArgumentValue(inputType!.description, args.joinWithSeparator(","))
             }
         }
         
         // Early check if rect command is valid
-        if inputType! == InputType.CreateRect(stripped){
+        if inputType! == InputType.CreateRect{
             guard args[0] != args[2] && args[1] != args[3] else {
                 throw InputParsingError.WrongArgumentValue(inputType!.description, args.joinWithSeparator(","))
             }
         }
         
         //extract args
-        return Input(type:inputType!, params: parsedArgs);
+        return Input(type:inputType!, params: parsedArgs, instruction: stripped);
     }
     
     
-    func parseArgs (inputType: InputType, args: [String]) throws -> [Any] {
+    private func parseArgs (inputType: InputType, args: [String]) throws -> [Any] {
         let expected = inputType.paramTypes.count
         let got = args.count
         // Validate that param numbers are the same as defined for command
@@ -165,16 +174,16 @@ class InputCreator: InputBuilder {
      
      - returns: Enum instance
      */
-    private func getFromKey(key: String, inputString: String) -> InputType? {
+    private func getFromKey(key: String) -> InputType? {
         switch key {
         case "C":
-            return .CreateCanvas(inputString)
+            return .CreateCanvas
         case "L":
-            return .CreateLine(inputString)
+            return .CreateLine
         case "R":
-            return .CreateRect(inputString)
+            return .CreateRect
         case "B":
-            return .BucketFill(inputString)
+            return .BucketFill
         default:
             return nil
         }

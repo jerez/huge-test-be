@@ -25,13 +25,26 @@ class CommandWrapper: Command {
 
 class DrawCommand: Command {
     internal var _input: Input
+    internal var _receiver: Drawer?
     
     init(input:Input){
         self._input = input;
     }
     
     func execute(receiver: Drawer)  {
-        receiver.logCommand("\(self._input)")
+        _receiver = receiver
+        _receiver!.logCommand("\(self._input)")
+    }
+    
+    func validateInput(inputType:InputType) -> Bool {
+        guard self._input.type == inputType else {
+            _receiver?.logCommand("Wrong Input")
+            return false }
+        guard self._input.params.count == inputType.paramTypes.count else {
+            _receiver?.logCommand("Wrong Args")
+            return false
+        }
+        return true
     }
 }
 
@@ -40,6 +53,7 @@ class CreateCanvasCommand: DrawCommand {
     
     override func execute(receiver: Drawer) {
         super.execute(receiver)
+        guard super.validateInput(InputType.CreateCanvas) else { return() }
         let canvas = ConcreteCanvas(width: self._input.params[0] as! uint, height: self._input.params[1] as! uint)
         guard canvas != nil else { return }
         receiver.setCanvas(canvas!)
@@ -57,10 +71,11 @@ class AddShapeCommand: DrawCommand {
     
     override func execute(receiver: Drawer)  {
         super.execute(receiver)
+        guard InputType.CreateLine == self._input.type || InputType.CreateRect == self._input.type else { return() }
         let coordinateA = Coordinate(x: self._input.params[0] as! uint, y: self._input.params[1] as! uint)
         let coordinateB = Coordinate(x: self._input.params[2] as! uint, y: self._input.params[3] as! uint)
         let coordinatePair = (a:coordinateA, b:coordinateB)
-        let shape = ShapeBuilder(strategy: self._strategy, coordinatePair:coordinatePair, color:  "x")
+        let shape = ConcreteShape(strategy: self._strategy, coordinatePair:coordinatePair, color:  "x")
         receiver.drawInCanvas(shape)
     }
 }
@@ -70,6 +85,7 @@ class BucketFillCommand: DrawCommand {
     
     override func execute(receiver: Drawer)  {
         super.execute(receiver)
+        guard super.validateInput(InputType.BucketFill) else { return() }
         let point = Coordinate(x: self._input.params[0] as! uint, y: self._input.params[1] as! uint)
         let color = self._input.params[2] as! Character
         receiver.fillCanvasBucket(point, color: color)

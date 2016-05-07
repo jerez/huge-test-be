@@ -11,28 +11,12 @@ import XCTest
 
 
 /// Uncategorized and generic Tests
-class DrawingToolTests: XCTestCase {
-    
-    /**
-     Simple test to check coordinate equality
-     */
-    func testCoordinateEquality() {
-        let coordinateA = Coordinate(x:5, y:15)
-        let coordinateB = Coordinate(x:5, y:15)
-        XCTAssertEqual(coordinateA, coordinateB)
-    }
-    
-    
-    func testCoordinateInequality() {
-        let coordinateA = Coordinate(x:5, y:15)
-        let coordinateB = Coordinate(x:15, y:5)
-        XCTAssertNotEqual(coordinateA, coordinateB)
-    }
+class DrawingToolTests: XCTestCase {}
 
-}
 
+
+//Wrappers for Exception tests
 //Asserts to test Throwing exceptions
-
 func XCTAssertThrows<T>(@autoclosure expression: () throws -> T, _ message: String = "", file: StaticString = #file, line: UInt = #line) {
     do {
         try expression()

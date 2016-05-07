@@ -11,6 +11,7 @@ import Foundation
 protocol PlotStrategy {
     func buildPlot(coordinates: CoordinatePair) -> [Coordinate]
 }
+
 /// Algorithm to plot Lines
 class LineStrategy : PlotStrategy {
     func buildPlot(coordinates: CoordinatePair) -> [Coordinate]{

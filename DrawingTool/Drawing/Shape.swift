@@ -17,7 +17,6 @@ extension Coordinate: Equatable {}
 
 // MARK: Equatable
 func == (lhs: Coordinate, rhs: Coordinate) -> Bool {
-    // Naive equality that uses number comparison rather than resolving equivalent selectors
     return lhs.x == rhs.x && lhs.y == rhs.y
 }
 
@@ -36,7 +35,7 @@ protocol Shape {
  *  Concrete implementation of shape that uses
  *  a strategy to determine if should build a line or a rect
  */
-class ShapeBuilder: Shape {
+class ConcreteShape: Shape {
     
     internal let _strategy: PlotStrategy;
     internal let _coordPair: CoordinatePair;

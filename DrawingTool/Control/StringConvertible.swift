@@ -28,7 +28,7 @@ extension CanvasDrawingError: CustomStringConvertible {
 
 extension Input: CustomStringConvertible {
     var description: String {
-        return "Input(\(self.type.description))"
+        return "Input(\(self.instruction))"
     }
 }
 
