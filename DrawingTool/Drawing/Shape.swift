@@ -8,6 +8,21 @@
 
 import Foundation
 
+struct Coordinate {
+    let x: uint
+    let y: uint
+}
+
+extension Coordinate: Equatable {}
+
+// MARK: Equatable
+func == (lhs: Coordinate, rhs: Coordinate) -> Bool {
+    // Naive equality that uses number comparison rather than resolving equivalent selectors
+    return lhs.x == rhs.x && lhs.y == rhs.y
+}
+
+typealias CoordinatePair = (a: Coordinate, b: Coordinate)
+
 /**
  *  Represents any drawable object to be putted inside canvas plot
  */
@@ -45,6 +60,7 @@ class ShapeBuilder: Shape {
         self.color = color
     }
     
+    /// Array of coordinates that represents the shape
     var plot: [Coordinate]? {
          get {
             if self._plot == nil {

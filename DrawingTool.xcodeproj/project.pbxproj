@@ -7,56 +7,53 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C965D29F1CDBDF3700F4B3CD /* OutputBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C965D29E1CDBDF3700F4B3CD /* OutputBuffer.swift */; };
+		C9C12BC91CDD7501004BB0F3 /* input.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = C9C12BC81CDD7477004BB0F3 /* input.txt */; };
+		C9C12BCB1CDD7568004BB0F3 /* Executor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C12BCA1CDD7568004BB0F3 /* Executor.swift */; };
+		C9C12BD81CDD7764004BB0F3 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C12BCD1CDD7764004BB0F3 /* Command.swift */; };
+		C9C12BD91CDD7764004BB0F3 /* Drawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C12BCE1CDD7764004BB0F3 /* Drawer.swift */; };
+		C9C12BDA1CDD7764004BB0F3 /* StringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C12BCF1CDD7764004BB0F3 /* StringConvertible.swift */; };
+		C9C12BDB1CDD7764004BB0F3 /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C12BD11CDD7764004BB0F3 /* Canvas.swift */; };
+		C9C12BDC1CDD7764004BB0F3 /* PlotStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C12BD21CDD7764004BB0F3 /* PlotStrategy.swift */; };
+		C9C12BDD1CDD7764004BB0F3 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C12BD31CDD7764004BB0F3 /* Shape.swift */; };
+		C9C12BDE1CDD7764004BB0F3 /* FileIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C12BD51CDD7764004BB0F3 /* FileIO.swift */; };
+		C9C12BDF1CDD7764004BB0F3 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C12BD61CDD7764004BB0F3 /* Input.swift */; };
+		C9C12BE01CDD7764004BB0F3 /* OutputBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C12BD71CDD7764004BB0F3 /* OutputBuffer.swift */; };
 		C9FCB0F81CD7BE9300D97B57 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB0F71CD7BE9300D97B57 /* main.swift */; };
 		C9FCB1051CD7BEAF00D97B57 /* DrawingToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB1041CD7BEAF00D97B57 /* DrawingToolTests.swift */; };
-		C9FCB1251CD937AE00D97B57 /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB11F1CD937AE00D97B57 /* Canvas.swift */; };
-		C9FCB1261CD937AE00D97B57 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB1201CD937AE00D97B57 /* Coordinate.swift */; };
-		C9FCB1291CD937AE00D97B57 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB1231CD937AE00D97B57 /* Shape.swift */; };
-		C9FCB15C1CD9814300D97B57 /* PlotStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB15B1CD9814300D97B57 /* PlotStrategy.swift */; };
-		C9FCB1601CD9C65F00D97B57 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB15F1CD9C65F00D97B57 /* Command.swift */; };
-		C9FCB1621CDB58CE00D97B57 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB1611CDB58CE00D97B57 /* Input.swift */; };
-		C9FCB1641CDBB23700D97B57 /* StringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB1631CDBB23700D97B57 /* StringConvertible.swift */; };
-		C9FCB1661CDBB49D00D97B57 /* Drawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB1651CDBB49D00D97B57 /* Drawer.swift */; };
 		C9FCB1681CDBBC9E00D97B57 /* IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB1671CDBBC9E00D97B57 /* IntegrationTests.swift */; };
-		C9FCB1691CDBBFB600D97B57 /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB11F1CD937AE00D97B57 /* Canvas.swift */; };
-		C9FCB16A1CDBBFB600D97B57 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB1201CD937AE00D97B57 /* Coordinate.swift */; };
-		C9FCB16B1CDBBFB600D97B57 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB1231CD937AE00D97B57 /* Shape.swift */; };
-		C9FCB16C1CDBBFB600D97B57 /* PlotStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB15B1CD9814300D97B57 /* PlotStrategy.swift */; };
 		C9FCB16D1CDBBFB600D97B57 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB0F71CD7BE9300D97B57 /* main.swift */; };
-		C9FCB16E1CDBBFB600D97B57 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB15F1CD9C65F00D97B57 /* Command.swift */; };
-		C9FCB16F1CDBBFB600D97B57 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB1611CDB58CE00D97B57 /* Input.swift */; };
-		C9FCB1701CDBBFB600D97B57 /* StringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB1631CDBB23700D97B57 /* StringConvertible.swift */; };
-		C9FCB1711CDBBFB600D97B57 /* Drawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FCB1651CDBB49D00D97B57 /* Drawer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		C9FCB0F21CD7BE9300D97B57 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 16;
 			files = (
+				C9C12BC91CDD7501004BB0F3 /* input.txt in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C965D29E1CDBDF3700F4B3CD /* OutputBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutputBuffer.swift; sourceTree = "<group>"; };
+		C9C12BC81CDD7477004BB0F3 /* input.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = input.txt; sourceTree = "<group>"; };
+		C9C12BCA1CDD7568004BB0F3 /* Executor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Executor.swift; sourceTree = "<group>"; };
+		C9C12BCD1CDD7764004BB0F3 /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		C9C12BCE1CDD7764004BB0F3 /* Drawer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Drawer.swift; sourceTree = "<group>"; };
+		C9C12BCF1CDD7764004BB0F3 /* StringConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringConvertible.swift; sourceTree = "<group>"; };
+		C9C12BD11CDD7764004BB0F3 /* Canvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
+		C9C12BD21CDD7764004BB0F3 /* PlotStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlotStrategy.swift; sourceTree = "<group>"; };
+		C9C12BD31CDD7764004BB0F3 /* Shape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
+		C9C12BD51CDD7764004BB0F3 /* FileIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileIO.swift; sourceTree = "<group>"; };
+		C9C12BD61CDD7764004BB0F3 /* Input.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
+		C9C12BD71CDD7764004BB0F3 /* OutputBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutputBuffer.swift; sourceTree = "<group>"; };
 		C9FCB0F41CD7BE9300D97B57 /* DrawingTool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DrawingTool; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9FCB0F71CD7BE9300D97B57 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		C9FCB1021CD7BEAF00D97B57 /* DrawingToolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrawingToolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9FCB1041CD7BEAF00D97B57 /* DrawingToolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingToolTests.swift; sourceTree = "<group>"; };
 		C9FCB1061CD7BEAF00D97B57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C9FCB11F1CD937AE00D97B57 /* Canvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Canvas.swift; path = Models/Canvas.swift; sourceTree = "<group>"; };
-		C9FCB1201CD937AE00D97B57 /* Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Coordinate.swift; path = Models/Coordinate.swift; sourceTree = "<group>"; };
-		C9FCB1231CD937AE00D97B57 /* Shape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Shape.swift; path = Models/Shape.swift; sourceTree = "<group>"; };
-		C9FCB15B1CD9814300D97B57 /* PlotStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlotStrategy.swift; path = Models/PlotStrategy.swift; sourceTree = "<group>"; };
-		C9FCB15F1CD9C65F00D97B57 /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
-		C9FCB1611CDB58CE00D97B57 /* Input.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
-		C9FCB1631CDBB23700D97B57 /* StringConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringConvertible.swift; sourceTree = "<group>"; };
-		C9FCB1651CDBB49D00D97B57 /* Drawer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Drawer.swift; sourceTree = "<group>"; };
 		C9FCB1671CDBBC9E00D97B57 /* IntegrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegrationTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +75,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C9C12BCC1CDD7764004BB0F3 /* Control */ = {
+			isa = PBXGroup;
+			children = (
+				C9C12BCD1CDD7764004BB0F3 /* Command.swift */,
+				C9C12BCE1CDD7764004BB0F3 /* Drawer.swift */,
+				C9C12BCF1CDD7764004BB0F3 /* StringConvertible.swift */,
+			);
+			path = Control;
+			sourceTree = "<group>";
+		};
+		C9C12BD01CDD7764004BB0F3 /* Drawing */ = {
+			isa = PBXGroup;
+			children = (
+				C9C12BD11CDD7764004BB0F3 /* Canvas.swift */,
+				C9C12BD21CDD7764004BB0F3 /* PlotStrategy.swift */,
+				C9C12BD31CDD7764004BB0F3 /* Shape.swift */,
+			);
+			path = Drawing;
+			sourceTree = "<group>";
+		};
+		C9C12BD41CDD7764004BB0F3 /* IO */ = {
+			isa = PBXGroup;
+			children = (
+				C9C12BD51CDD7764004BB0F3 /* FileIO.swift */,
+				C9C12BD61CDD7764004BB0F3 /* Input.swift */,
+				C9C12BD71CDD7764004BB0F3 /* OutputBuffer.swift */,
+			);
+			path = IO;
+			sourceTree = "<group>";
+		};
 		C9FCB0EB1CD7BE9300D97B57 = {
 			isa = PBXGroup;
 			children = (
@@ -99,16 +126,12 @@
 		C9FCB0F61CD7BE9300D97B57 /* DrawingTool */ = {
 			isa = PBXGroup;
 			children = (
-				C9FCB11F1CD937AE00D97B57 /* Canvas.swift */,
-				C9FCB1201CD937AE00D97B57 /* Coordinate.swift */,
-				C9FCB1231CD937AE00D97B57 /* Shape.swift */,
-				C9FCB15B1CD9814300D97B57 /* PlotStrategy.swift */,
+				C9C12BC81CDD7477004BB0F3 /* input.txt */,
 				C9FCB0F71CD7BE9300D97B57 /* main.swift */,
-				C9FCB15F1CD9C65F00D97B57 /* Command.swift */,
-				C9FCB1611CDB58CE00D97B57 /* Input.swift */,
-				C9FCB1631CDBB23700D97B57 /* StringConvertible.swift */,
-				C9FCB1651CDBB49D00D97B57 /* Drawer.swift */,
-				C965D29E1CDBDF3700F4B3CD /* OutputBuffer.swift */,
+				C9C12BCA1CDD7568004BB0F3 /* Executor.swift */,
+				C9C12BCC1CDD7764004BB0F3 /* Control */,
+				C9C12BD01CDD7764004BB0F3 /* Drawing */,
+				C9C12BD41CDD7764004BB0F3 /* IO */,
 			);
 			path = DrawingTool;
 			sourceTree = "<group>";
@@ -211,16 +234,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9FCB1621CDB58CE00D97B57 /* Input.swift in Sources */,
+				C9C12BCB1CDD7568004BB0F3 /* Executor.swift in Sources */,
 				C9FCB0F81CD7BE9300D97B57 /* main.swift in Sources */,
-				C965D29F1CDBDF3700F4B3CD /* OutputBuffer.swift in Sources */,
-				C9FCB1291CD937AE00D97B57 /* Shape.swift in Sources */,
-				C9FCB1251CD937AE00D97B57 /* Canvas.swift in Sources */,
-				C9FCB15C1CD9814300D97B57 /* PlotStrategy.swift in Sources */,
-				C9FCB1261CD937AE00D97B57 /* Coordinate.swift in Sources */,
-				C9FCB1641CDBB23700D97B57 /* StringConvertible.swift in Sources */,
-				C9FCB1661CDBB49D00D97B57 /* Drawer.swift in Sources */,
-				C9FCB1601CD9C65F00D97B57 /* Command.swift in Sources */,
+				C9C12BDD1CDD7764004BB0F3 /* Shape.swift in Sources */,
+				C9C12BDF1CDD7764004BB0F3 /* Input.swift in Sources */,
+				C9C12BE01CDD7764004BB0F3 /* OutputBuffer.swift in Sources */,
+				C9C12BDB1CDD7764004BB0F3 /* Canvas.swift in Sources */,
+				C9C12BD91CDD7764004BB0F3 /* Drawer.swift in Sources */,
+				C9C12BDA1CDD7764004BB0F3 /* StringConvertible.swift in Sources */,
+				C9C12BDE1CDD7764004BB0F3 /* FileIO.swift in Sources */,
+				C9C12BD81CDD7764004BB0F3 /* Command.swift in Sources */,
+				C9C12BDC1CDD7764004BB0F3 /* PlotStrategy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,17 +252,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9FCB16F1CDBBFB600D97B57 /* Input.swift in Sources */,
 				C9FCB1051CD7BEAF00D97B57 /* DrawingToolTests.swift in Sources */,
-				C9FCB16B1CDBBFB600D97B57 /* Shape.swift in Sources */,
 				C9FCB16D1CDBBFB600D97B57 /* main.swift in Sources */,
-				C9FCB16C1CDBBFB600D97B57 /* PlotStrategy.swift in Sources */,
-				C9FCB1701CDBBFB600D97B57 /* StringConvertible.swift in Sources */,
-				C9FCB16E1CDBBFB600D97B57 /* Command.swift in Sources */,
 				C9FCB1681CDBBC9E00D97B57 /* IntegrationTests.swift in Sources */,
-				C9FCB1691CDBBFB600D97B57 /* Canvas.swift in Sources */,
-				C9FCB1711CDBBFB600D97B57 /* Drawer.swift in Sources */,
-				C9FCB16A1CDBBFB600D97B57 /* Coordinate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

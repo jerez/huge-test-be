@@ -11,7 +11,7 @@ import Foundation
 protocol PlotStrategy {
     func buildPlot(coordinates: CoordinatePair) -> [Coordinate]
 }
-
+/// Algorithm to plot Lines
 class LineStrategy : PlotStrategy {
     func buildPlot(coordinates: CoordinatePair) -> [Coordinate]{
         
@@ -26,7 +26,13 @@ class LineStrategy : PlotStrategy {
         }
         return plot;
     }
-    
+    /**
+     Transforms coordinates to be ploted from init to end (init is the most closer to 0,0)
+     
+     - parameter coords: Pair of coordinates
+     
+     - returns: Pair of ordered coordinates
+     */
     private func transformCoordinates(coords: CoordinatePair)->(origin: Coordinate, end: Coordinate){
         return (
             origin: Coordinate(
@@ -40,6 +46,7 @@ class LineStrategy : PlotStrategy {
     }
 }
 
+/// Algorithm to plot Rects
 class RectStrategy : LineStrategy {
     
     override func buildPlot(coordinates: CoordinatePair) -> [Coordinate]{

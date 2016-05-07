@@ -8,11 +8,23 @@
 
 import Foundation
 
+/**
+ *  Describes a parsed instruction
+ */
 struct Input {
     let type: InputType
     let params:[Any]
 }
 
+
+/**
+ Types of instructions supported
+ 
+ - CreateCanvas:
+ - CreateLine:
+ - CreateRect:
+ - BucketFill:
+ */
 enum InputType {
     
     case CreateCanvas(String)
@@ -20,6 +32,12 @@ enum InputType {
     case CreateRect(String)
     case BucketFill(String)
     
+    /**
+     Types of params supported
+     
+     - String:
+     - Number:
+     */
     enum ParamType {
         case String
         case Number
@@ -34,18 +52,39 @@ enum InputType {
     
 }
 
+/**
+ Types of Errors could be thrown on input parsing
+ 
+ - WrongInput:
+ - WrongArgumentNumber:
+ - WrongArgumentValue:
+ */
 enum InputParsingError: ErrorType {
     case WrongInput(String)
     case WrongArgumentNumber(String, Int, Int)
     case WrongArgumentValue(String, String)
 }
 
+/**
+ *  Defines the interface needed for a Input Builder / Parser
+ */
 protocol InputBuilder {
+    /**
+     Parses string instruction into [Input] struct
+     
+     - parameter string: plain instruction
+     
+     - throws: can throw any InputParsingError
+     
+     - returns: Input struct representing instruction
+     */
     func parseInput (string: String) throws -> Input
     func parseArgs (inputType: InputType, args: [String]) throws -> [Any]
 }
 
+/// Actual Input Builde instance
 class InputCreator: InputBuilder {
+    
     func parseInput(string: String) throws -> Input{
         let stripped = self.stripSpaces(string)
         let splitted = stripped.componentsSeparatedByString(" ")
@@ -95,7 +134,14 @@ class InputCreator: InputBuilder {
         return parsedArgs
     }
     
-    
+    /**
+     Creates the enumeration instance from key associated
+     
+     - parameter key:         C, L, R, B
+     - parameter inputString: Actual command parsed, just for store it
+     
+     - returns: Enum instance
+     */
     private func getFromKey(key: String, inputString: String) -> InputType? {
         switch key {
         case "C":
