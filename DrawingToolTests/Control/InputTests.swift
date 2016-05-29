@@ -247,6 +247,24 @@ class InputTests: XCTestCase {
         let subject = InputCreator()
         XCTAssertThrows(try subject.parseInput("B 3 4 vv"))
     }
+    
+    func testInputBuilder_creation_diagonal_input() {
+        let subject = InputCreator()
+        let input = try! subject.parseInput("D 1 1 3 3")
+        XCTAssertTrue(input.type == InputType.CreateDiagonal)
+        XCTAssertTrue(input.params[0] as! UInt32 == 1 )
+        XCTAssertTrue(input.params[1] as! UInt32 == 1 )
+        XCTAssertTrue(input.params[2] as! UInt32 == 3 )
+        XCTAssertTrue(input.params[3] as! UInt32 == 3 )
+        
+    }
+    
+    func testInputBuilder_creation_Diagonal_input_throws() {
+        let subject = InputCreator()
+        XCTAssertThrows(try subject.parseInput("D 1 1 3 4"))
+    }
+    
+    
 
 }
 

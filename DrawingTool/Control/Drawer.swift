@@ -120,6 +120,8 @@ extension DrawOperation : Operation{
                 self._commands.append(CreateCanvasCommand(input:input))
             case .CreateLine:
                 self._commands.append(AddShapeCommand(input:input, strategy: lineStrategy))
+            case .CreateDiagonal:
+                self._commands.append(AddShapeCommand(input:input, strategy: lineStrategy))
             case .CreateRect:
                 self._commands.append(AddShapeCommand(input:input, strategy: rectStrategy))
             case .BucketFill:

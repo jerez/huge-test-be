@@ -37,6 +37,7 @@ extension InputType: CustomStringConvertible {
     var description: String {
         switch self {
         case CreateCanvas(let inputString):  return "CreateCanvas -> {\"\(inputString)\"}"
+        case CreateDiagonal(let inputString): return "CreateDiagonal -> {\"\(inputString)\"}"
         case CreateLine(let inputString): return "CreateLine -> {\"\(inputString)\"}"
         case CreateRect(let inputString): return "CreateRect -> {\"\(inputString)\"}"
         case BucketFill(let inputString): return "BucketFill -> {\"\(inputString)\"}"

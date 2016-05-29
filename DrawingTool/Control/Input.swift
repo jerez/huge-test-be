@@ -47,6 +47,7 @@ enum InputType {
     
     case CreateCanvas
     case CreateLine
+    case CreateDiagonal
     case CreateRect
     case BucketFill
     
@@ -63,7 +64,7 @@ enum InputType {
     var paramTypes: [ParamType]{
         switch self {
         case CreateCanvas: return [.Number, .Number]
-        case CreateLine, CreateRect: return [.Number, .Number, .Number, .Number]
+        case CreateLine, CreateDiagonal, CreateRect: return [.Number, .Number, .Number, .Number]
         case BucketFill: return [.Number, .Number, .String]
         }
     }
@@ -133,6 +134,17 @@ class InputCreator: InputBuilder {
             }
         }
         
+        // Early check if Diagonal command is valid
+        if inputType! == InputType.CreateDiagonal{
+            let xDifference = abs(Int(args[2])!-Int(args[0])!)
+            let yDifference = abs(Int(args[3])!-Int(args[1])!)
+            
+            guard xDifference == yDifference else {
+                throw InputParsingError.WrongArgumentValue(inputType!.description, args.joinWithSeparator(","))
+            }
+        }
+        
+        
         //extract args
         return Input(type:inputType!, params: parsedArgs, instruction: stripped);
     }
@@ -180,6 +192,8 @@ class InputCreator: InputBuilder {
             return .CreateCanvas
         case "L":
             return .CreateLine
+        case "D":
+            return .CreateDiagonal
         case "R":
             return .CreateRect
         case "B":
