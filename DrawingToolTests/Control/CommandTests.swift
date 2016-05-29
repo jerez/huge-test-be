@@ -60,8 +60,8 @@ class CommandTests: XCTestCase {
         XCTAssertEqual(drawer!.setCanvasCallCounter, 0)
     }
     
-    func testCreateShape_Command() {
-        let input = Input(type: InputType.CreateLine, params: [uint(2),uint(3), uint(2),uint(3)], instruction: "")
+    func testCreateShape_Command_withLine() {
+        let input = Input(type: InputType.CreateLine, params: [uint(2),uint(3), uint(3),uint(3)], instruction: "")
         let subject = AddShapeCommand(input: input, strategy: MockStrategy())
         
         subject.execute(drawer!)
@@ -69,6 +69,27 @@ class CommandTests: XCTestCase {
         XCTAssertEqual(drawer!.logCallCounter, 1)
         XCTAssertEqual(drawer!.drawInCanvasCallCounter, 1)
     }
+    
+    func testCreateShape_Command_withRect() {
+        let input = Input(type: InputType.CreateRect, params: [uint(2),uint(3), uint(4),uint(4)], instruction: "")
+        let subject = AddShapeCommand(input: input, strategy: MockStrategy())
+        
+        subject.execute(drawer!)
+        
+        XCTAssertEqual(drawer!.logCallCounter, 1)
+        XCTAssertEqual(drawer!.drawInCanvasCallCounter, 1)
+    }
+    
+    func testCreateShape_Command_withDiagonal() {
+        let input = Input(type: InputType.CreateDiagonal, params: [uint(1),uint(1), uint(3),uint(3)], instruction: "")
+        let subject = AddShapeCommand(input: input, strategy: MockStrategy())
+        
+        subject.execute(drawer!)
+        
+        XCTAssertEqual(drawer!.logCallCounter, 1)
+        XCTAssertEqual(drawer!.drawInCanvasCallCounter, 1)
+    }
+    
     
     func testCreateShape_Command_wrongInput() {
         let input = Input(type: InputType.CreateCanvas, params: [uint(2),uint(3), uint(2),uint(3)], instruction: "")

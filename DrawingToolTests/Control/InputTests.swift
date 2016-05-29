@@ -264,7 +264,25 @@ class InputTests: XCTestCase {
         XCTAssertThrows(try subject.parseInput("D 1 1 3 4"))
     }
     
+    func testInputBuilder_creation_Diagonal_input_throws_1() {
+        let subject = InputCreator()
+        XCTAssertThrows(try subject.parseInput("D"))
+    }
     
+    func testInputBuilder_creation_Diagonal_input_throws_2() {
+        let subject = InputCreator()
+        XCTAssertThrows(try subject.parseInput("D 1 1 3"))
+    }
+    
+    func testInputBuilder_creation_Diagonal_input_throws_3() {
+        let subject = InputCreator()
+        XCTAssertThrows(try subject.parseInput("D 1 1 3 a"))
+    }
+    
+    func testInputBuilder_creation_Diagonal_input_throws_4() {
+        let subject = InputCreator()
+        XCTAssertThrows(try subject.parseInput("D a b c d"))
+    }
 
 }
 

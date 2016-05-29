@@ -71,7 +71,9 @@ class AddShapeCommand: DrawCommand {
     
     override func execute(receiver: Drawer)  {
         super.execute(receiver)
-        guard InputType.CreateLine == self._input.type || InputType.CreateRect == self._input.type else { return() }
+        guard InputType.CreateLine == self._input.type
+            || InputType.CreateRect == self._input.type
+            || InputType.CreateDiagonal == self._input.type else { return() }
         let coordinateA = Coordinate(x: self._input.params[0] as! uint, y: self._input.params[1] as! uint)
         let coordinateB = Coordinate(x: self._input.params[2] as! uint, y: self._input.params[3] as! uint)
         let coordinatePair = (a:coordinateA, b:coordinateB)

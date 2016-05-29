@@ -113,6 +113,7 @@ extension DrawOperation : Operation{
     func prepareOperation(instructions: [Input]) {
         let lineStrategy = LineStrategy()
         let rectStrategy = RectStrategy()
+        let diagonalStrategy = DiagonalStrategy()
         for input in instructions {
             self._buffer?.log(input.description)
             switch input.type {
@@ -121,7 +122,7 @@ extension DrawOperation : Operation{
             case .CreateLine:
                 self._commands.append(AddShapeCommand(input:input, strategy: lineStrategy))
             case .CreateDiagonal:
-                self._commands.append(AddShapeCommand(input:input, strategy: lineStrategy))
+                self._commands.append(AddShapeCommand(input:input, strategy: diagonalStrategy))
             case .CreateRect:
                 self._commands.append(AddShapeCommand(input:input, strategy: rectStrategy))
             case .BucketFill:

@@ -78,3 +78,29 @@ class RectStrategy : LineStrategy {
         return plot
     }
 }
+
+class DiagonalStrategy : LineStrategy {
+    override func buildPlot(coordinates: CoordinatePair) -> [Coordinate] {
+        guard greaterThanZero(coordinates) && isDiagonalLine(coordinates) else {
+            return []
+        }
+        
+        let plotSize = abs(Int(coordinates.a.x) - Int(coordinates.b.x))
+        let isXIncrement = coordinates.a.x < coordinates.b.x
+        let isYIncrement = coordinates.a.y < coordinates.b.y
+        
+        var plot = [Coordinate]()
+        
+        for i in 0...plotSize {
+            let xValue = isXIncrement ? coordinates.a.x + uint(i) : coordinates.a.x - uint(i)
+            let yValue = isYIncrement ? coordinates.a.y + uint(i) : coordinates.a.y - uint(i)
+            plot.append(Coordinate(x: xValue, y: yValue))
+        }
+        return plot;
+    }
+    
+    private func isDiagonalLine(coordinates: CoordinatePair) -> Bool {
+        return abs(Int(coordinates.b.x) - Int(coordinates.a.x)) == abs(Int(coordinates.b.y) - Int(coordinates.a.y))
+    }
+}
+

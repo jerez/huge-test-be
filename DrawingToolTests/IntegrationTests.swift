@@ -17,6 +17,7 @@ class IntegrationTests: XCTestCase {
         "L 6 3 6 4",
         "R 16 1 20 3",
         "B 10 3 o",
+        "D 1 1 3 3",
         ]
     var operation: DrawOperation?
     let inputBuilder = InputCreator()
@@ -52,6 +53,19 @@ class IntegrationTests: XCTestCase {
         XCTAssertEqual(operation!.canvas?.plot[2][6], "x")
 
     }
+    
+    func testDiagonalLineCreation() {
+        let instructions =  [string_commands[0], string_commands[5]]
+        let commands = instructions.map{ try! inputBuilder.parseInput($0) }
+        
+        operation!.prepareOperation(commands)
+        operation!.getCommands()?.execute(operation!)
+        
+        XCTAssertEqual(operation!.canvas?.plot[1][1], "x")
+        XCTAssertEqual(operation!.canvas?.plot[2][2], "x")
+        XCTAssertEqual(operation!.canvas?.plot[3][3], "x")
+    }
+    
     
     func testPrepareOperationPerformance() {
         // This is an example of a performance test case.

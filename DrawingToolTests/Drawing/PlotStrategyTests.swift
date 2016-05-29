@@ -14,11 +14,13 @@ class PlotStrategyTests: XCTestCase {
     
     var subjectLine: LineStrategy?
     var subjectRect: RectStrategy?
+    var subjectDiagonal: DiagonalStrategy?
     
     override func setUp() {
         super.setUp()
         subjectLine = LineStrategy()
         subjectRect = RectStrategy()
+        subjectDiagonal = DiagonalStrategy()
     }
     
     override func tearDown() { super.tearDown() }
@@ -122,5 +124,49 @@ class PlotStrategyTests: XCTestCase {
         XCTAssertTrue(out.contains(Coordinate(x: 1, y: 2)))
         XCTAssertFalse(out.contains(Coordinate(x: 2, y: 2)))
     }
+    
+    
+    func testDiagonalLineStratgy_is_valid() {
+        let coords = (Coordinate(x: 1,y: 1), Coordinate(x: 3,y:3))
+        let out = subjectDiagonal!.buildPlot(coords)
+        XCTAssertFalse(out.isEmpty)
+    }
+    
+    func testDiagonalLineStratgy_is_not_valid() {
+        let coords = (Coordinate(x: 1,y: 1), Coordinate(x: 3, y:4))
+        let out = subjectDiagonal!.buildPlot(coords)
+        XCTAssertTrue(out.isEmpty)
+    }
+    
+    
+    func testDiagonalStratgy_createRect_pathSize() {
+        let coords = (Coordinate(x: 1,y: 1), Coordinate(x: 3,y: 3))
+        let out = subjectDiagonal!.buildPlot(coords)
+        XCTAssertEqual(out.count, 3)
+    }
+    
+    func testDiagonalStratgy_createRect_pathSize_2() {
+        let coords = (Coordinate(x: 1,y: 3), Coordinate(x: 3,y: 1))
+        let out = subjectDiagonal!.buildPlot(coords)
+        XCTAssertEqual(out.count, 3)
+    }
+    
+    
+    func testDiagonalLineStratgy_createRect_path_elements() {
+        let coords = (Coordinate(x: 1,y: 1), Coordinate(x: 3,y: 3))
+        let out = subjectDiagonal!.buildPlot(coords)
+        XCTAssertTrue(out.contains(Coordinate(x: 1, y: 1)))
+        XCTAssertTrue(out.contains(Coordinate(x: 2, y: 2)))
+        XCTAssertTrue(out.contains(Coordinate(x: 3, y: 3)))
+    }
+    
+    func testDiagonalLineStratgy_createRect_path_elements_2() {
+        let coords = (Coordinate(x: 1,y: 3), Coordinate(x: 3,y: 1))
+        let out = subjectDiagonal!.buildPlot(coords)
+        XCTAssertTrue(out.contains(Coordinate(x: 1, y: 3)))
+        XCTAssertTrue(out.contains(Coordinate(x: 2, y: 2)))
+        XCTAssertTrue(out.contains(Coordinate(x: 3, y: 1)))
+    }
+    
     
 }
