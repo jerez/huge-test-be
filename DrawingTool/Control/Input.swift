@@ -121,7 +121,12 @@ class InputCreator: InputBuilder {
         
         // Early check if line command is valid
         if inputType! == InputType.CreateLine{
-            guard args[0]==args[2] || args[1]==args[3] else {
+            
+            let xDifference = abs(Int(args[2])!-Int(args[0])!)
+            let yDifference = abs(Int(args[3])!-Int(args[1])!)
+            guard args[0]==args[2] || args[1]==args[3] ||
+                xDifference == yDifference
+                else {
                 throw InputParsingError.WrongArgumentValue(inputType!.description, args.joinWithSeparator(","))
             }
         }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C97DEB4E1CFB775400FE3D8A /* OperationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97DEB4D1CFB775400FE3D8A /* OperationTest.swift */; };
 		C9C12BC91CDD7501004BB0F3 /* input.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = C9C12BC81CDD7477004BB0F3 /* input.txt */; };
 		C9C12BCB1CDD7568004BB0F3 /* Executor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C12BCA1CDD7568004BB0F3 /* Executor.swift */; };
 		C9C12BD81CDD7764004BB0F3 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C12BCD1CDD7764004BB0F3 /* Command.swift */; };
@@ -53,6 +54,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C97DEB4D1CFB775400FE3D8A /* OperationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationTest.swift; sourceTree = "<group>"; };
 		C9C12BC81CDD7477004BB0F3 /* input.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = input.txt; sourceTree = "<group>"; };
 		C9C12BCA1CDD7568004BB0F3 /* Executor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Executor.swift; sourceTree = "<group>"; };
 		C9C12BCD1CDD7764004BB0F3 /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				C9C12BED1CDD8D03004BB0F3 /* CommandTests.swift */,
 				C9C12BEF1CDD8D1B004BB0F3 /* DrawerTests.swift */,
 				C9C12BFC1CDD8F68004BB0F3 /* InputTests.swift */,
+				C97DEB4D1CFB775400FE3D8A /* OperationTest.swift */,
 			);
 			path = Control;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				C9C12BE11CDD84AD004BB0F3 /* Command.swift in Sources */,
 				C9C12BE51CDD84AD004BB0F3 /* PlotStrategy.swift in Sources */,
 				C9C12BE71CDD84AD004BB0F3 /* FileIO.swift in Sources */,
+				C97DEB4E1CFB775400FE3D8A /* OperationTest.swift in Sources */,
 				C9C12BF61CDD8D8B004BB0F3 /* ShapeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

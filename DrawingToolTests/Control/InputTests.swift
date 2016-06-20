@@ -82,6 +82,17 @@ class InputTests: XCTestCase {
 
     }
     
+    func testInputBuilder_creation_Line_input_2() {
+        let subject = InputCreator()
+        let input = try! subject.parseInput("L 1 1 3 3")
+        XCTAssertTrue(input.type == InputType.CreateLine)
+        XCTAssertTrue(input.params[0] as! UInt32 == 1 )
+        XCTAssertTrue(input.params[1] as! UInt32 == 1 )
+        XCTAssertTrue(input.params[2] as! UInt32 == 3 )
+        XCTAssertTrue(input.params[3] as! UInt32 == 3 )
+        
+    }
+    
     func testInputBuilder_creation_Rect_input() {
         let subject = InputCreator()
         let input = try! subject.parseInput("R 16 1 20 3")
